@@ -1,3 +1,3 @@
 module.exports = async (client) => {
-    console.log("Oh hi mark");
+    console.log("Ka-boom!");
 };
