@@ -1,15 +1,16 @@
 {
-  "name": "markbot",
-  "version": "1.0.0",
-  "description": "ohhimark",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "discord.js": "^12.5.3"
-  }
+    "name": "markbot",
+    "version": "1.0.0",
+    "description": "ohhimark",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "lajbel",
+    "license": "MIT",
+    "dependencies": {
+        "discord.js": "^12.5.3"
+    }
 }
