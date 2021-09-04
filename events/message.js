@@ -1,6 +1,11 @@
 module.exports = (client, message) => {
     const prefix = "!";
 
+    if (message.content.match(/(https:\/\/)?(discord.(gg|com)\/(invite\/\w+|\w+))/g)) {
+        message.delete();
+        message.channel.send("No send discord invites!!!");
+    };
+
     if(message.content.startsWith(prefix) && !message.author.bot) {
         const args = message.content.slice(prefix.length).split(/ +/);
         const command = args.shift().toLowerCase();

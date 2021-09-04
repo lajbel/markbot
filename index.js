@@ -24,9 +24,9 @@ for(const dir of readdirSync(__dirname + "/commands")) {
     };
 };
 
-for(const file of readdirSync(__dirname + "./events")) {
+for(const file of readdirSync(__dirname + "/events")) {
     if(file.endsWith(".js")) {
-        const content = require(__dirname + `./events/${file}`)
+        const content = require(__dirname + `/events/${file}`)
         const key = file.substring(0, file.length - 3);
 
         client.on(key, content.bind(null, client));
