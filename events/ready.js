@@ -1,3 +1,3 @@
 module.exports = async (client) => {
-    console.log("The bot is online");
+    console.log("Oh hi mark");
 };
