@@ -1,7 +1,7 @@
 module.exports = (client, message) => {
     const prefix = "!";
 
-    if (message.content.match(/(https:\/\/)?(discord.(gg|com)\/(invite\/\w+|\w+))/g)) {
+    if (message.content.match(/(https:\/\/)?(discord.(gg|com)\/(invite\/\w+|\w+))/g) && !message.member.hasPermission("ADMINISTRATOR")) {
         message.delete();
         message.channel.send("No send discord invites!!!");
     };
