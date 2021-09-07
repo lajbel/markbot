@@ -3,7 +3,7 @@
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
 
-const client = new Client();
+const client = new Client({disableMentions: "all"});
 client.commands = new Collection();
 client.aliases = new Collection();
 
