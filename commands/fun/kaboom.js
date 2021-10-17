@@ -1,6 +1,6 @@
 module.exports = {
-    name: "hi",
-    alias: ["h"],
+    name: "kaboom",
+    alias: ["k"],
     run: (client, message, args) => {
         const funnyKaboom = [
             "https://imgur.com/EFhRwqF.gif", 
