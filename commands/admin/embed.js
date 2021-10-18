@@ -4,8 +4,8 @@ module.exports = {
     name: "embed",
     alias: [],
     run: (client, message, args) => {
-        if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("you too peasant to use this");
+        if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("i ban you haha");
 
-        return message.channel.send("WORK IN PROGRESS. THANKS: LaJBel")
+        return message.channel.send("WORK IN PROGRESS. ATTE: LaJBel")
     }
 };
