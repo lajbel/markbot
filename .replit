@@ -1,1 +1,1 @@
-run="node index.js"
+run="node source/index.js"
