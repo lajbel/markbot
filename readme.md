@@ -2,4 +2,17 @@
 
 Mark Bot is a Discord Bot for moderate and configurate the [Kaboom](https://github.com/replit/kaboom) [Discord Server](https://discord.gg/rD8GQqdxqe)
 
-![mark](https://user-images.githubusercontent.com/71136486/132133160-a88f38d4-b01a-44f0-8874-24dba42a9f28.png)
+![mark](markbot.png)
+
+## Contribute
+
+Make commits that are useful, make sure it works well and don't try to give yourself privileges or try to break the operation
+
+### Cool Commits
+
+* New Commands
+* Fix Commands
+
+## Build
+
+You needs Discord.js v12 lol 

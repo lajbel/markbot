@@ -8,7 +8,7 @@ module.exports = {
 
         let arr = args.join(' ').split('|')
 
-        const embed = new MesssageEmbed()
+        const embed = new MessageEmbed()
         .setTitle(arr[0])
         .setColor("0xffe359")
         .setDescription(arr[1])
