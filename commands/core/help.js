@@ -10,7 +10,7 @@ module.exports = {
 
         const embed = new MessageEmbed()
         .setDescription(commandsArr.join(" - "))
-        .setTitle("HAHA I am MARK, and this is my COMMANDS")
+        .setTitle("HAHA I am MARK, and these are my COMMANDS")
         .setColor("0xffe359");
 
         message.channel.send(embed);

@@ -8,7 +8,9 @@ module.exports = (client, message) => {
         message.channel.send("No send discord invites!!!");
     };
 
-    if(message.content.startsWith(prefix) && !message.author.bot) {
+    // Runs command 
+
+    if(message.content.startsWith(prefix) && message.channel.type != "dm" && !message.author.bot) {
         const args = message.content.slice(prefix.length).split(/ +/);
         const command = args.shift().toLowerCase();
 
