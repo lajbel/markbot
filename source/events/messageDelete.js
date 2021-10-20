@@ -1,5 +1,13 @@
-module.exports = (client, message) => {    
-    const logs = client.guilds.cache.get("").channels.cache.get("819593108982988869");
+const { MessageEmbed } = require("discord.js");
 
-    logs.send("Message Deleted: " + message.content + "\n" + "by: " + message.author.tag);
+module.exports = (client, message) => {    
+    const logs = client.guilds.cache.get("883781994583056384").channels.cache.get("900101147572989982");
+
+    const embed = new MessageEmbed()
+    .setColor("0xff2134")
+    .setTitle("Message Deleted")
+    .setDescription('"' + message.content + '"')
+    .setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true }));
+    
+    logs.send(embed);
 };
