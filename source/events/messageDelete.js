@@ -7,7 +7,8 @@ module.exports = (client, message) => {
     .setColor("0xff2134")
     .setTitle("Message Deleted")
     .setDescription('"' + message.content + '"')
-    .setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true }));
-    
+    .setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
+    .setFooter("deleted in " + message.channel.name);
+
     logs.send(embed);
 };
