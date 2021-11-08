@@ -4,6 +4,7 @@ export default function kaboomCommand() {
     return {
         name: "kaboom",
         description: "KaBoom!!!",
+        options: [],
         exe: (interaction: any) => {
             const funnyKaboom: string[] = [
                 "https://imgur.com/EFhRwqF.gif", 

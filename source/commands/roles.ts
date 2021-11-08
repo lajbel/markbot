@@ -1,9 +1,10 @@
-import { addReaction, sendInteractionResponse, getOriginalInteractionResponse, DiscordInteractionResponseTypes } from "https://deno.land/x/discordeno/mod.ts"
+import { addReaction, sendInteractionResponse, getOriginalInteractionResponse, DiscordInteractionResponseTypes, DiscordMessageComponentTypes, ButtonStyles } from "https://deno.land/x/discordeno/mod.ts"
 
 export default function rolesCommand() {
     return {
         name: "roles",
         description: "Get a role",
+        options: [],
         exe: async (interaction: any) => {
             const embed = {
                 color: 0xffe359,
@@ -12,9 +13,31 @@ export default function rolesCommand() {
             };
 
             sendInteractionResponse(interaction.id, interaction.token, {
+                private: true,
                 type: DiscordInteractionResponseTypes.ChannelMessageWithSource,
                 data: {
-                    embeds: [ embed ]
+                    embeds: [ embed ],
+                    components: [ 
+                        {
+                            type: 1,
+                            components: [
+                                {
+                                    type: DiscordMessageComponentTypes.Button,
+                                    label: "Helper",
+                                    customId: "helper_button",
+                                    style: ButtonStyles.Primary,
+                                    emoji: { id: "883793329647652934", name: "minimark" }
+                                },
+                                {
+                                    type: DiscordMessageComponentTypes.Button,
+                                    label: "Announcements",
+                                    customId: "announcements_button",
+                                    style: ButtonStyles.Primary,
+                                    emoji: { id: "884789264745897994", name: "cowmark" }
+                                }
+                            ]
+                        } 
+                    ]
                 }
             });
         }
