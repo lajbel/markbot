@@ -18,7 +18,8 @@ yourself privileges or try to break the operation
 
 ## Build 🏗️
 
-For build Markbot in your own repository, you can fork this or clone in local (git and deno is needed)
+For build Markbot in your own repository, you can fork this or clone in local
+(git and deno is needed)
 
 ```sh
 # Clone repository
@@ -31,23 +32,26 @@ deno fmt
 
 ### Add a Command
 
-In `source/commands` make a new file, and use this command template: 
+In `source/commands` make a new file, and use this command template:
 
 ```ts
 export default function newCommand() {
-    return {
-        name: "newCommand",
-        options: [ /* Your command options */ ],
-        exe: (interaction: any) => {
-            console.log("my new command is here")
-        }
-    };
+  return {
+    name: "newCommand",
+    description: "A new cool command for MarkBot",
+    options: [/* Your command options */],
+    exe: (interaction: any) => {
+      console.log("my new command is here");
+    },
+  };
 }
 ```
 
-Your new command is automatically loaded by `mod.ts` and uploaded in Slash Commands
+Your new command is automatically loaded by `mod.ts` and uploaded in Slash
+Commands
 
-## Powered By 🚀 
+## Powered By 🚀
 
-[DiscorDeno 🦕](https://github.com/discordeno/discordeno) - Very very good lib for interact with Discord API <br>
-[Replit 🌀](https://replit.com) - IDE and Hosting of MarkBot
+[DiscorDeno 🦕](https://github.com/discordeno/discordeno) - Very very good lib
+for interact with Discord API <br> [Replit 🌀](https://replit.com) - IDE and
+Hosting of MarkBot
