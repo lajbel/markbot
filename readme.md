@@ -13,8 +13,8 @@ yourself privileges or try to break the operation
 
 ### Cool Commits
 
-- New Commands
-- Fix Commands
+- New commands and interactions
+- Fix bugs or typo
 
 ## Build 🏗️
 
@@ -25,9 +25,7 @@ For build Markbot in your own repository, you can fork this or clone in local
 # Clone repository
 git clone https://github.com/lajbel/markbot.git
 # Run
-deno run -A --no-check source/mod.ts
-# Format code
-deno fmt
+deno run -A  source/mod.ts
 ```
 
 ### Add a Command
@@ -35,20 +33,21 @@ deno fmt
 In `source/commands` make a new file, and use this command template:
 
 ```ts
+import { sendInteractionResponse, SlashCommandInteraction, DiscordApplicationCommandOptionTypes, DiscordInteractionResponseTypes } from "https://deno.land/x/discordeno/mod.ts";
+
 export default function newCommand() {
-  return {
-    name: "newCommand",
-    description: "A new cool command for MarkBot",
-    options: [/* Your command options */],
-    exe: (interaction: any) => {
-      console.log("my new command is here");
-    },
-  };
-}
+  	return {
+    	name: "newCommand",
+    	description: "A new cool command for MarkBot",
+    	options: [/* Your command options */],
+    	exe: (interaction: SlashCommandInteraction) => {
+      		console.log("my new command is here");
+    	}
+  	};
+};
 ```
 
-Your new command is automatically loaded by `mod.ts` and uploaded in Slash
-Commands
+Your new command is automatically loaded by `mod.ts` and uploaded in a slash command
 
 ## Powered By 🚀
 
