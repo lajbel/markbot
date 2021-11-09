@@ -1,6 +1,6 @@
 # Mark Bot 🤖
 
-Mark Bot is a Discord Bot for moderate and configurate the
+Mark Bot is a Discord Bot for moderate, configurate and give fun in the
 [Kaboom](https://github.com/replit/kaboom)
 [Discord Server](https://discord.gg/rD8GQqdxqe)
 
