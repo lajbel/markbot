@@ -1,12 +1,14 @@
 // Import Modules ///////////////
 
-import { 
-    startBot, 
-    setBotId, 
-    setApplicationId, 
-    createSlashCommand, 
-    CreateGlobalApplicationCommand 
+import {
+  CreateGlobalApplicationCommand,
+  createSlashCommand,
+  setApplicationId,
+  setBotId,
+  startBot,
 } from "https://deno.land/x/discordeno/mod.ts";
+
+import { alive } from "./alive.ts";
 
 // Events
 
@@ -18,12 +20,12 @@ import { interactionCreate } from "./events/interactionCreate.ts";
 const token = Deno.env.get("TOKEN")!;
 
 startBot({
-    token: token,
-    intents: ["Guilds", "GuildMessages"],
-    eventHandlers: {
-        ready,
-        interactionCreate
-    },
+  token: token,
+  intents: ["Guilds", "GuildMessages"],
+  eventHandlers: {
+    ready,
+    interactionCreate,
+  },
 });
 
 setApplicationId("905921669619658752");
@@ -37,33 +39,35 @@ export const buttonsActions = new Map();
 export let commandNames: string[] = [];
 
 for await (const file of Deno.readDir("source/commands")) {
-    if (file.name.endsWith('.ts')) {
-        import(`./commands/${file.name}`).then(file => {
-            const cmd = file.default;
-            const command = cmd();
+  if (file.name.endsWith(".ts")) {
+    import(`./commands/${file.name}`).then((file) => {
+      const cmd = file.default;
+      const command = cmd();
 
-            const commandOptions: CreateGlobalApplicationCommand = {
-                name: command.name,
-                description: command.description,
-                options: command.options
-            };
+      const commandOptions: CreateGlobalApplicationCommand = {
+        name: command.name,
+        description: command.description,
+        options: command.options,
+      };
 
-            createSlashCommand(commandOptions, 883781994583056384n);
+      createSlashCommand(commandOptions, 883781994583056384n);
 
-            commands.set(command.name, command);
+      commands.set(command.name, command);
 
-            commandNames.push(command.name);
-        });
-    };
-};
+      commandNames.push(command.name);
+    });
+  }
+}
 
 for await (const file of Deno.readDir("source/buttons")) {
-    if (file.name.endsWith('.ts')) {
-        import(`./buttons/${file.name}`).then(file => {
-            const btn = file.default;
-            const button = btn();
+  if (file.name.endsWith(".ts")) {
+    import(`./buttons/${file.name}`).then((file) => {
+      const btn = file.default;
+      const button = btn();
 
-            buttonsActions.set(button.name, button);
-        });
-    };
-};
+      buttonsActions.set(button.name, button);
+    });
+  }
+}
+
+alive();
