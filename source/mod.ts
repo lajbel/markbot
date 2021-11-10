@@ -6,6 +6,7 @@ import { alive } from "./util/alive.ts";
 
 import { ready } from "./events/ready.ts";
 import { interactionCreate } from "./events/interactionCreate.ts";
+import { messageCreate } from "./events/messageCreate.ts";
 
 /*-----------------Load Bot-----------------*/
 
@@ -13,7 +14,8 @@ startBot({
 	token: Deno.env.get("TOKEN")!,
 	intents: ["Guilds", "GuildMessages"],
 	eventHandlers: {
-		ready: ready, 
+		ready: ready,
+		messageCreate: messageCreate,
 		interactionCreate
 	}
 });
