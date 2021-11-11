@@ -4,9 +4,10 @@ import { createSlashCommand, setApplicationId, setBotId, startBot, CreateGlobalA
 import { readDir } from "./util/readDir.ts";
 import { alive } from "./util/alive.ts";
 
-import { ready } from "./events/ready.ts";
 import { interactionCreate } from "./events/interactionCreate.ts";
 import { messageCreate } from "./events/messageCreate.ts";
+import { messageDelete } from "./events/messageDelete.ts";
+import { ready } from "./events/ready.ts";
 
 /*-----------------Load Bot-----------------*/
 
@@ -14,9 +15,10 @@ startBot({
 	token: Deno.env.get("TOKEN")!,
 	intents: ["Guilds", "GuildMessages"],
 	eventHandlers: {
-		ready: ready,
-		messageCreate: messageCreate,
-		interactionCreate
+		interactionCreate,
+		messageCreate,
+		messageDelete,
+		ready
 	}
 });
 

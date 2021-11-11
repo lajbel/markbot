@@ -8,8 +8,10 @@ import {
 
 export {
 	addRole,
+	channelOverwriteHasPermission,
 	createSlashCommand,
 	editBotStatus,
+	getMember,
 	getUser,
 	removeRole,
 	sendInteractionResponse,
@@ -21,6 +23,7 @@ export {
 	DiscordApplicationCommandOptionTypes,
 	DiscordInteractionResponseTypes,
 	DiscordMessageComponentTypes,
+	DiscordOverwriteTypes,
 	ButtonStyles
 } from "https://deno.land/x/discordeno/mod.ts";
 

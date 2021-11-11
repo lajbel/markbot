@@ -1,5 +1,5 @@
 # Configuration for Replit
 
 language = "Deno"
-run="deno run -A --no-check --config deno.json source/main.ts"
+run="deno run -A --no-check source/main.ts"
 entrypoint="source/mod.ts"
