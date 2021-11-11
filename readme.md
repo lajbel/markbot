@@ -44,8 +44,7 @@ export default function newCommand() {
 	};
 };
 ```
-
-Your new command is automatically loaded by `mod.ts` and uploaded in a slash command
+Your new command is automatically loaded by `main.ts` and uploaded in a slash command
 
 ## Powered By 🚀
 
