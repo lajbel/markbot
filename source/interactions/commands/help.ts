@@ -1,5 +1,5 @@
-import { sendInteractionResponse, SlashCommandInteraction, DiscordInteractionResponseTypes } from "https://deno.land/x/discordeno/mod.ts";
-import { commandNames } from "../mod.ts";
+import { sendInteractionResponse, SlashCommandInteraction, DiscordInteractionResponseTypes } from "../../deps.ts";
+import { commandNames } from "../../main.ts";
 
 export default function helpCommand() {
   	return {
@@ -7,7 +7,7 @@ export default function helpCommand() {
 		description: "Get help of me",
 		options: [],
 		exe: (interaction: SlashCommandInteraction) => {
-			const commands = commandNames.map((x: string) => "**" + x + "**").join(" - ");
+			const commands = commandNames.map((x: string) => "`" + x + "`").join(" - ");
 
 			const embed = {
 				color: 0xffe359,
@@ -21,7 +21,7 @@ export default function helpCommand() {
 					},
 					{
 						name: "Links",
-						value: "[Contribute](https://github.com/lajbel/markbot)",
+						value: "[`Contribute`](https://github.com/lajbel/markbot) - [`Replit`](https://replit.com/@lajbel/markbot)",
 						inline: false
 					},
 				]

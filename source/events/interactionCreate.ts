@@ -1,7 +1,7 @@
-import { DiscordenoMember, Interaction } from "https://deno.land/x/discordeno/mod.ts";
-import { buttonsActions, commands } from "../mod.ts";
+import { DiscordenoMember, Interaction } from "../deps.ts";
+import { buttonsActions, commands } from "../main.ts";
 
-export function interactionCreate(interaction: any) {
+export function interactionCreate(interaction: Interaction, member?: DiscordenoMember) {
 	const cmd = commands.get(interaction.data.name);
 	const btnAction = buttonsActions.get(interaction.data.customId);
 

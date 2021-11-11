@@ -1,4 +1,4 @@
-import { editBotStatus, DiscordActivityTypes } from "https://deno.land/x/discordeno/mod.ts";
+import { editBotStatus, DiscordActivityTypes } from "../deps.ts";
 
 export function ready() {
 	console.log("ka-boom");
@@ -11,6 +11,6 @@ export function ready() {
 			createdAt: 0,
     	}],
 		status: "idle",
-		afk: false,
+		afk: false
 	});
 };

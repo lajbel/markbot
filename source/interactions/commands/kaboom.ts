@@ -1,4 +1,4 @@
-import { sendInteractionResponse, SlashCommandInteraction, DiscordInteractionResponseTypes } from "https://deno.land/x/discordeno/mod.ts";
+import { sendInteractionResponse, SlashCommandInteraction, DiscordInteractionResponseTypes } from "../../deps.ts";
 
 export default function kaboomCommand() {
   	return {

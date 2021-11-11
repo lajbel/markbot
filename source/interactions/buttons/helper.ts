@@ -1,4 +1,4 @@
-import { addRole, removeRole, sendInteractionResponse, DiscordInteractionResponseTypes } from "https://deno.land/x/discordeno/mod.ts";
+import { addRole, removeRole, sendInteractionResponse, DiscordInteractionResponseTypes } from "../../deps.ts";
 
 export default function helperButton() {
   	return {

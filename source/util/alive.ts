@@ -7,15 +7,11 @@ export async function alive() {
 
 	app.use((ctx) => {
 		console.log(`markbot pinged!`);
-	});
-
-	app.use((ctx) => {
-		console.log("returning a response ...");
 		ctx.response.body = "thx";
 	});
-
+	
 	// ping markbot every 60 seconds
-	setInterval(() => fetch("https://denomark.lajbel.repl.co"), 60000);
+	setInterval(() => fetch(`https://${Deno.env.get("REPL_ID")}.id.repl.co`), 60000);
 
 	await app.listen({ port: 8000 });
 };

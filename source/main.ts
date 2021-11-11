@@ -1,6 +1,6 @@
 /*--------------Import Modules--------------*/
 
-import { CreateGlobalApplicationCommand, createSlashCommand, setApplicationId, setBotId, startBot, updateEventHandlers } from "https://deno.land/x/discordeno/mod.ts";
+import { createSlashCommand, setApplicationId, setBotId, startBot, CreateGlobalApplicationCommand } from "./deps.ts";
 import { readDir } from "./util/readDir.ts";
 import { alive } from "./util/alive.ts";
 
@@ -29,8 +29,8 @@ export let commands = new Map();
 export let commandNames: string[] = [];
 export let buttonsActions = new Map();
 
-readDir("source/commands", (file) => {
-	import(`./commands/${file.name}`).then((file) => {
+readDir("source/interactions/commands", (file: any) => {
+	import(`./interactions/commands/${file.name}`).then((file: any) => {
 		const command = (file.default)();
 
     	createSlashCommand({
@@ -44,10 +44,9 @@ readDir("source/commands", (file) => {
 	});
 });
 
-readDir("source/buttons", (file) => {
-	import(`./buttons/${file.name}`).then((file) => {
-		const btn = file.default;
-		const button = btn();
+readDir("source/interactions/buttons", (file: any) => {
+	import(`./interactions/buttons/${file.name}`).then((file: any) => {
+		const button = (file.default)();
 
 		buttonsActions.set(button.name, button);
 	});

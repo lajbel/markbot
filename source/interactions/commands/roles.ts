@@ -1,4 +1,4 @@
-import { addReaction, getOriginalInteractionResponse, sendInteractionResponse, ButtonStyles, SlashCommandInteraction, DiscordInteractionResponseTypes, DiscordMessageComponentTypes } from "https://deno.land/x/discordeno/mod.ts";
+import { sendInteractionResponse, ButtonStyles, SlashCommandInteraction, DiscordInteractionResponseTypes, DiscordMessageComponentTypes } from "../../deps.ts";
 
 export default function rolesCommand() {
 	return {

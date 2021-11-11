@@ -1,4 +1,4 @@
-import { getUser, sendInteractionResponse, SlashCommandInteraction, DiscordApplicationCommandOptionTypes, DiscordInteractionResponseTypes } from "https://deno.land/x/discordeno/mod.ts";
+import { getUser, sendInteractionResponse, SlashCommandInteraction, DiscordApplicationCommandOptionTypes, DiscordInteractionResponseTypes } from "../../deps.ts";
 
 export default function hiCommand() {
 	return {
