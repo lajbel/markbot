@@ -1,4 +1,4 @@
-import { addRole, removeRole, sendInteractionResponse, DiscordInteractionResponseTypes } from "../../deps.ts";
+import {addRole, removeRole, sendInteractionResponse, DiscordInteractionResponseTypes} from "../../deps.ts";
 
 export default function announcementsButton() {
 	return {
@@ -11,23 +11,22 @@ export default function announcementsButton() {
 			const member = BigInt(interaction.member.user.id);
 
 			if (!interaction.member.roles.includes(announcementesRole)) {
-        		addRole(guildId, member, role).then(() => {
-          			sendInteractionResponse(interaction.id, interaction.token, {
-            			private: true,
-            			type: DiscordInteractionResponseTypes.ChannelMessageWithSource,
-            			data: { content: "Announcements role added" }
-          			});
-        		});
-      		} 
-			else {
-        		removeRole(guildId, member, role).then(() => {
-          			sendInteractionResponse(interaction.id, interaction.token, {
-            			private: true,
-            			type: DiscordInteractionResponseTypes.ChannelMessageWithSource,
-            			data: { content: "Announcements role removed" },
-          			});
-        		});
-      		};
-    	}
-  	};
-};
+				addRole(guildId, member, role).then(() => {
+					sendInteractionResponse(interaction.id, interaction.token, {
+						private: true,
+						type: DiscordInteractionResponseTypes.ChannelMessageWithSource,
+						data: {content: "Announcements role added"},
+					});
+				});
+			} else {
+				removeRole(guildId, member, role).then(() => {
+					sendInteractionResponse(interaction.id, interaction.token, {
+						private: true,
+						type: DiscordInteractionResponseTypes.ChannelMessageWithSource,
+						data: {content: "Announcements role removed"},
+					});
+				});
+			}
+		},
+	};
+}

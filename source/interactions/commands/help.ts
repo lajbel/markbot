@@ -1,8 +1,8 @@
-import { sendInteractionResponse, SlashCommandInteraction, DiscordInteractionResponseTypes } from "../../deps.ts";
-import { commandNames } from "../../main.ts";
+import {sendInteractionResponse, SlashCommandInteraction, DiscordInteractionResponseTypes} from "../../deps.ts";
+import {commandNames} from "../../main.ts";
 
 export default function helpCommand() {
-  	return {
+	return {
 		name: "help",
 		description: "Get help of me",
 		options: [],
@@ -17,20 +17,20 @@ export default function helpCommand() {
 					{
 						name: "Commands",
 						value: commands,
-						inline: false
+						inline: false,
 					},
 					{
 						name: "Links",
 						value: "[`Contribute`](https://github.com/lajbel/markbot) - [`Replit`](https://replit.com/@lajbel/markbot)",
-						inline: false
+						inline: false,
 					},
-				]
+				],
 			};
 
-      		sendInteractionResponse(interaction.id, interaction.token, {
+			sendInteractionResponse(interaction.id, interaction.token, {
 				type: DiscordInteractionResponseTypes.ChannelMessageWithSource,
-				data: { embeds: [embed] }
-      		});
-    	}
-  	};
-};
+				data: {embeds: [embed]},
+			});
+		},
+	};
+}

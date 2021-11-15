@@ -10,8 +10,8 @@ Make commits that are useful, make sure it works well and don't try to give your
 
 ### Cool Commits
 
-- New commands and interactions
-- Fix bugs or typo
+-   New commands and interactions
+-   Fix bugs or typo
 
 ## Build 🏗️
 
@@ -31,23 +31,24 @@ Optionality you can [**Fork in Replit**](https://replit.com/@lajbel/denomark)
 In `source/commands` make a new `.ts` file, and use this command template:
 
 ```ts
-import { sendInteractionResponse, SlashCommandInteraction, DiscordApplicationCommandOptionTypes, DiscordInteractionResponseTypes } from "https://deno.land/x/discordeno/mod.ts";
+import {sendInteractionResponse, SlashCommandInteraction, DiscordApplicationCommandOptionTypes, DiscordInteractionResponseTypes} from "https://deno.land/x/discordeno/mod.ts";
 
 export default function newCommand() {
-  	return {
+	return {
 		name: "newCommand",
 		description: "A new cool command for MarkBot",
-		options: [/* Your command options */],
+		options: [
+			/* Your command options */
+		],
 		exe: (interaction: SlashCommandInteraction) => {
 			console.log("my new command is here");
-		}
+		},
 	};
-};
+}
 ```
+
 Your new command is automatically loaded by `main.ts` and uploaded in a slash command
 
 ## Powered By 🚀
 
-[DiscorDeno 🦕](https://github.com/discordeno/discordeno) - Very very good lib for interact with Discord API <br> 
-[Replit 🌀](https://replit.com) - IDE and
-Hosting of MarkBot
+[DiscorDeno 🦕](https://github.com/discordeno/discordeno) - Very very good lib for interact with Discord API <br> [Replit 🌀](https://replit.com) - IDE and Hosting of MarkBot

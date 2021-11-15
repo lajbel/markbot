@@ -2,4 +2,4 @@
 
 language = "Deno"
 run="deno run -A --no-check source/main.ts"
-entrypoint="source/mod.ts"
+entrypoint="source/main.ts"

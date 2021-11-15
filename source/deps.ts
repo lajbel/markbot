@@ -1,10 +1,4 @@
-import {
-	CreateGlobalApplicationCommand,
-	Interaction,
-	SlashCommandInteraction,
-	DiscordenoMember,
-	DiscordenoMessage
-} from "https://deno.land/x/discordeno/mod.ts";
+import {CreateGlobalApplicationCommand, Interaction, SlashCommandInteraction, DiscordenoMember, DiscordenoMessage} from "https://deno.land/x/discordeno@12.0.1/mod.ts";
 
 export {
 	addRole,
@@ -24,13 +18,7 @@ export {
 	DiscordInteractionResponseTypes,
 	DiscordMessageComponentTypes,
 	DiscordOverwriteTypes,
-	ButtonStyles
-} from "https://deno.land/x/discordeno/mod.ts";
+	ButtonStyles,
+} from "https://deno.land/x/discordeno@12.0.1/mod.ts";
 
-export type {
-	CreateGlobalApplicationCommand,
-	Interaction,
-	SlashCommandInteraction,
-	DiscordenoMember,
-	DiscordenoMessage
-};
+export type {CreateGlobalApplicationCommand, Interaction, SlashCommandInteraction, DiscordenoMember, DiscordenoMessage};

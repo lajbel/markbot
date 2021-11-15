@@ -1,13 +1,13 @@
 /*--------------Import Modules--------------*/
 
-import { createSlashCommand, setApplicationId, setBotId, startBot, CreateGlobalApplicationCommand } from "./deps.ts";
-import { readDir } from "./util/readDir.ts";
-import { alive } from "./util/alive.ts";
+import {createSlashCommand, setApplicationId, setBotId, startBot, CreateGlobalApplicationCommand} from "./deps.ts";
+import {readDir} from "./util/readDir.ts";
+import {alive} from "./util/alive.ts";
 
-import { interactionCreate } from "./events/interactionCreate.ts";
-import { messageCreate } from "./events/messageCreate.ts";
-import { messageDelete } from "./events/messageDelete.ts";
-import { ready } from "./events/ready.ts";
+import {interactionCreate} from "./events/interactionCreate.ts";
+import {messageCreate} from "./events/messageCreate.ts";
+import {messageDelete} from "./events/messageDelete.ts";
+import {ready} from "./events/ready.ts";
 
 /*-----------------Load Bot-----------------*/
 
@@ -18,8 +18,8 @@ startBot({
 		interactionCreate,
 		messageCreate,
 		messageDelete,
-		ready
-	}
+		ready,
+	},
 });
 
 setApplicationId("905921669619658752");
@@ -33,22 +33,25 @@ export let buttonsActions = new Map();
 
 readDir("source/interactions/commands", (file: any) => {
 	import(`./interactions/commands/${file.name}`).then((file: any) => {
-		const command = (file.default)();
+		const command = file.default();
 
-    	createSlashCommand({
-			name: command.name,
-			description: command.description,
-			options: command.options
-    	}, 883781994583056384n);
+		createSlashCommand(
+			{
+				name: command.name,
+				description: command.description,
+				options: command.options,
+			},
+			883781994583056384n
+		);
 
-    	commands.set(command.name, command);
-    	commandNames.push(command.name);
+		commands.set(command.name, command);
+		commandNames.push(command.name);
 	});
 });
 
 readDir("source/interactions/buttons", (file: any) => {
 	import(`./interactions/buttons/${file.name}`).then((file: any) => {
-		const button = (file.default)();
+		const button = file.default();
 
 		buttonsActions.set(button.name, button);
 	});
