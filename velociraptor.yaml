@@ -1,0 +1,5 @@
+scripts:
+  start: deno run -A src/mod.ts
+  dev:
+    cmd: deno run -A --no-check src/mod.ts
+    watch: true

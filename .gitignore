@@ -3,5 +3,12 @@
 .cache/
 .config/
 .nix/
-node_modules/
 .deno/
+
+### VsCode
+
+.vscode
+
+### More
+
+.env

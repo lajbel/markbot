@@ -1,12 +1,18 @@
-import {sendInteractionResponse, SlashCommandInteraction, DiscordInteractionResponseTypes} from "../../deps.ts";
-import {commandNames} from "../../main.ts";
+import { 
+	sendInteractionResponse,
+	Bot,
+	DiscordenoInteraction,
+	DiscordInteractionResponseTypes
+} from "../deps.ts";
+
+import { commandNames } from "../mod.ts";
 
 export default function helpCommand() {
 	return {
 		name: "help",
 		description: "Get help of me",
 		options: [],
-		exe: (interaction: SlashCommandInteraction) => {
+		exe: (bot: Bot, interaction: DiscordenoInteraction) => {
 			const commands = commandNames.map((x: string) => "`" + x + "`").join(" - ");
 
 			const embed = {
@@ -27,7 +33,7 @@ export default function helpCommand() {
 				],
 			};
 
-			sendInteractionResponse(interaction.id, interaction.token, {
+			sendInteractionResponse(bot, interaction.id, interaction.token, {
 				type: DiscordInteractionResponseTypes.ChannelMessageWithSource,
 				data: {embeds: [embed]},
 			});
