@@ -11,6 +11,6 @@ export function ready(bot: Bot) {
 				createdAt: 0,
 			},
 		],
-		status: "idle"
+		status: "online"
 	});
 }

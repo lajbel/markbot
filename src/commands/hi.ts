@@ -1,8 +1,8 @@
 import { 
-	getMember,
+	getUser,
 	sendInteractionResponse,
 	Bot,
-	DiscordApplicationCommandOptionTypes,
+	ApplicationCommandOptionTypes,
 	DiscordenoInteraction,
 	DiscordInteractionResponseTypes
 } from "../deps.ts";
@@ -13,24 +13,24 @@ export default function hiCommand() {
 		description: "Oh hi",
 		options: [
 			{
-				type: DiscordApplicationCommandOptionTypes.User,
+				type: ApplicationCommandOptionTypes.User,
 				name: "user",
 				description: "User for say hi",
 				required: false,
 			},
 		],
 		exe: (bot: Bot, interaction: DiscordenoInteraction) => {
-			let member;
+			let user;
 
 			/*
-			if (interaction.data?.options) member = await getMember(bot, interaction.guildId!, interaction.data?.options[0]?.value?.user.id)
-			else member = interaction.member
-
+			i need fix
+			user = interaction.data?.resolved?.users?.get(interaction.data!.options![0]!.value!.user!.id)
+			*/
+		
 			sendInteractionResponse(bot, interaction.id, interaction.token, {
 				type: DiscordInteractionResponseTypes.ChannelMessageWithSource,
-				data: {content: `Oh hi ${member.nickname}`},
+				data: {content: `Oh hi MARK`},
 			});
-			*/
 		},
 	};
 }
