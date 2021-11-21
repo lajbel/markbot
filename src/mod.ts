@@ -18,11 +18,17 @@ import { ready } from "./events/ready.ts";
 
 const env: DotenvConfig = config();
 
+let token = env.TOKEN;
+let id = env.ID;
+
+if(!token) token = Deno.env.get("TOKEN")!;
+if(!id) id = Deno.env.get("ID")!;
+
 // bot setup
 const bot: Bot = createBot({
-	token: env.TOKEN,
-	botId: BigInt(env.ID),
-	applicationId: BigInt(env.ID),
+	token: token,
+	botId: BigInt(id),
+	applicationId: BigInt(id),
 	events: {
 		interactionCreate,
 		messageCreate,
