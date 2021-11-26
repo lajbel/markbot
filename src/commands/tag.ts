@@ -1,5 +1,5 @@
 import {getUser, sendInteractionResponse, SlashCommandInteraction, DiscordApplicationCommandOptionTypes, DiscordInteractionResponseTypes} from "../../deps.ts";
-import Database from '@replit/database';
+import Database from 'https://deno.land/x/replit_database/mod.ts';
 
 const db = new Database()
 
