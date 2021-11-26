@@ -5,10 +5,6 @@
 .nix/
 .deno/
 
-### VsCode
-
-.vscode
-
 ### More
 
 .env

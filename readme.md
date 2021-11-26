@@ -1,8 +1,10 @@
 # Mark Bot 🤖
 
-Mark Bot is a Discord Bot for moderate, configurate and give fun in the [Kaboom](https://github.com/replit/kaboom) [Discord Server](https://discord.gg/rD8GQqdxqe)
+Mark Bot is a Discord Bot for moderate, configurate and give fun in the [Kaboom](https://github.com/replit/kaboom) Discord Server
 
 ![mark](markbot.png)
+
+[**Fork in Replit**](https://replit.com/@lajbel/denomark) **-** [**Discord Server**](https://discord.com/invite/aQ6RuQm3TF)
 
 ## Contribute 🎉
 
@@ -10,8 +12,8 @@ Make commits that are useful, make sure it works well and don't try to give your
 
 ### Cool Commits
 
--   New commands and interactions
--   Fix bugs or typo
+- New commands and interactions
+- Fix bugs or typo
 
 ## Build 🏗️
 
@@ -20,18 +22,33 @@ For build Markbot in your own repository, you can fork this or clone in local (g
 ```sh
 # Clone repository
 git clone https://github.com/lajbel/markbot.git
-# Run
+
+# Run project
 deno run -A  source/mod.ts
 ```
 
-Optionality you can [**Fork in Replit**](https://replit.com/@lajbel/denomark)
+Additionality, you can install [Velociraptor] for use vr scripts in `velociraptor.yaml` like `vr dev`
+
+### .env
+
+Env file structure:
+```env
+TOKEN=TOKENBOT
+BOTID=CLIENTID
+```
 
 ### Add a Command
 
-In `source/commands` make a new `.ts` file, and use this command template:
+In `src/commands` make a new `.ts` file, and use this command template:
 
 ```ts
-import {sendInteractionResponse, SlashCommandInteraction, DiscordApplicationCommandOptionTypes, DiscordInteractionResponseTypes} from "https://deno.land/x/discordeno/mod.ts";
+import { 
+	sendInteractionResponse,
+	Bot,
+	DiscordenoInteraction, 
+	DiscordApplicationCommandOptionTypes, 
+	DiscordInteractionResponseTypes
+} from "../deps.ts";
 
 export default function newCommand() {
 	return {
@@ -40,15 +57,16 @@ export default function newCommand() {
 		options: [
 			/* Your command options */
 		],
-		exe: (interaction: SlashCommandInteraction) => {
+		exe: (bot: Bot, interaction: DiscordenoInteraction) => {
 			console.log("my new command is here");
 		},
 	};
 }
 ```
 
-Your new command is automatically loaded by `main.ts` and uploaded in a slash command
+Your new command is automatically loaded by `mod.ts` and uploaded in a slash command
 
 ## Powered By 🚀
 
-[DiscorDeno 🦕](https://github.com/discordeno/discordeno) - Very very good lib for interact with Discord API <br> [Replit 🌀](https://replit.com) - IDE and Hosting of MarkBot
+[Discordeno 🦕](https://github.com/discordeno/discordeno) - Very very good lib for interact with Discord API <br> 
+[Replit 🌀](https://replit.com) - Hosting of MarkBot (thanks to @slmjkdbtl)

@@ -1,5 +1,4 @@
 import { 
-	getUser,
 	sendInteractionResponse,
 	Bot,
 	ApplicationCommandOptionTypes,
@@ -20,13 +19,6 @@ export default function hiCommand() {
 			},
 		],
 		exe: (bot: Bot, interaction: DiscordenoInteraction) => {
-			let user;
-
-			/*
-			i need fix
-			user = interaction.data?.resolved?.users?.get(interaction.data!.options![0]!.value!.user!.id)
-			*/
-		
 			sendInteractionResponse(bot, interaction.id, interaction.token, {
 				type: DiscordInteractionResponseTypes.ChannelMessageWithSource,
 				data: {content: `Oh hi MARK`},
