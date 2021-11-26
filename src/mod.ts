@@ -70,6 +70,5 @@ readDir("src/buttons", (file) => {
 	});
 });
 
-// run alive for 24/7 (doubtful) and start bot
+// start bot
 startBot(bot);
-alive();
