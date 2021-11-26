@@ -34,7 +34,7 @@ Additionality, you can install [Velociraptor] for use vr scripts in `velocirapto
 Env file structure:
 ```env
 TOKEN=TOKENBOT
-BOTID=CLIENTID
+ID=CLIENTID
 ```
 
 ### Add a Command

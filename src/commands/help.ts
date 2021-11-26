@@ -19,19 +19,14 @@ export default function helpCommand() {
 
 			const embed = {
 				color: 0xffe359,
-				title: "MarkBot Help",
-				description: "Haha I am Mark-Bot. You can use `/` for see all my commands",
+				title: "Mark Bot Help",
+				description: "Haha I am Mark Bot. You can use `/` for see all my commands",
 				fields: [
 					{
 						name: "Commands",
 						value: commands,
 						inline: false,
-					},
-					{
-						name: "Links",
-						value: "[`Contribute`](https://github.com/lajbel/markbot) - [`Replit`](https://replit.com/@lajbel/markbot)",
-						inline: false,
-					},
+					}
 				],
 			};
 
