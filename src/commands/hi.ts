@@ -21,7 +21,7 @@ export default function hiCommand() {
 		exe: (bot: Bot, interaction: DiscordenoInteraction) => {
 			sendInteractionResponse(bot, interaction.id, interaction.token, {
 				type: DiscordInteractionResponseTypes.ChannelMessageWithSource,
-				data: {content: `Oh hi MARK`},
+				data: {content: `Oh hi ${(interaction.data.resolved.members.first() || interaction.member).nick}`},
 			});
 		},
 	};
