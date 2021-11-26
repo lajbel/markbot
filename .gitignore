@@ -3,5 +3,8 @@
 .cache/
 .config/
 .nix/
-node_modules/
 .deno/
+
+### More
+
+.env
