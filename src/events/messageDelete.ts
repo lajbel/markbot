@@ -1,16 +1,13 @@
 // deno-lint-ignore-file no-explicit-any
 
-import { 
-	getUser, 
-	sendMessage,
-	Bot,
-	DiscordenoMessage
-} from "../deps.ts";
+import { Bot, DiscordenoMessage, getUser, sendMessage } from "../deps.ts";
 
 import { config } from "../config.ts";
 
 export async function messageDelete(bot: Bot, payload: any, message: (DiscordenoMessage | undefined)) {
-	if(!message) return;
+	console.log("jo")
+	if (!message) return;
+	console.log("jo")
 
 	const user = await getUser(bot, message.authorId);
 
@@ -25,7 +22,7 @@ export async function messageDelete(bot: Bot, payload: any, message: (Discordeno
 					name: user.username,
 					iconUrl: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}?size=64`,
 				},
-				footer: {text: `deleted in ${payload.channel.name}`},
+				footer: { text: `deleted in ${payload.channel.name}` },
 			},
 		],
 	});

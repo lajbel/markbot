@@ -1,11 +1,4 @@
-import { 
-	sendInteractionResponse,
-	Bot,
-	ButtonStyles,
-	DiscordMessageComponentTypes,
-	DiscordenoInteraction,
-	DiscordInteractionResponseTypes
-} from "../deps.ts";
+import { Bot, ButtonStyles, DiscordenoInteraction, DiscordInteractionResponseTypes, DiscordMessageComponentTypes, sendInteractionResponse } from "../deps.ts";
 
 import { commandNames } from "../mod.ts";
 
@@ -26,14 +19,14 @@ export default function helpCommand() {
 						name: "Commands",
 						value: commands,
 						inline: false,
-					}
+					},
 				],
 			};
 
 			sendInteractionResponse(bot, interaction.id, interaction.token, {
 				type: DiscordInteractionResponseTypes.ChannelMessageWithSource,
-				data: { 
-					embeds: [ embed ] ,
+				data: {
+					embeds: [embed],
 					components: [
 						{
 							type: 1,

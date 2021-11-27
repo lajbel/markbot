@@ -1,0 +1,16 @@
+{
+	"fmt": {
+		"files": {
+			"exclude": [
+				"velociraptor.yaml"
+			]
+		},
+		"options": {
+			"useTabs": true,
+			"lineWidth": 400,
+			"indentWidth": 4,
+			"singleQuote": false,
+			"proseWrap": "preserve"
+		}
+	}
+}

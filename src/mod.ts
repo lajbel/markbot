@@ -1,12 +1,4 @@
-import {
-	config,
-	createSlashCommand, 
-	createBot,
-	startBot,
-	ApplicationCommandTypes,
-	Bot,
-	DotenvConfig
-} from "./deps.ts";
+import { ApplicationCommandTypes, Bot, config, createBot, createSlashCommand, DotenvConfig, startBot } from "./deps.ts";
 
 import { readDir } from "./util/readDir.ts";
 import { alive } from "./util/alive.ts";
@@ -21,8 +13,8 @@ const env: DotenvConfig = config();
 let token = env.TOKEN;
 let id = env.ID;
 
-if(!token) token = Deno.env.get("TOKEN")!;
-if(!id) id = Deno.env.get("ID")!;
+if (!token) token = Deno.env.get("TOKEN")!;
+if (!id) id = Deno.env.get("ID")!;
 
 // bot setup
 const bot: Bot = createBot({
@@ -33,7 +25,7 @@ const bot: Bot = createBot({
 		interactionCreate,
 		messageCreate,
 		messageDelete,
-		ready
+		ready,
 	},
 	intents: ["Guilds", "GuildMessages"],
 	cache: {
@@ -54,7 +46,7 @@ readDir("src/commands", (file) => {
 			name: command.name,
 			description: command.description,
 			options: command.options,
-			type: ApplicationCommandTypes.ChatInput
+			type: ApplicationCommandTypes.ChatInput,
 		}, 883781994583056384n);
 
 		commands.set(command.name, command);

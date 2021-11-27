@@ -1,9 +1,9 @@
 import { buttonsActions, commands } from "../mod.ts";
-import { DiscordenoInteraction, Bot } from "../deps.ts";
+import { Bot, DiscordenoInteraction } from "../deps.ts";
 
 export function interactionCreate(bot: Bot, interaction: DiscordenoInteraction) {
 	// command only in guild
-	if(!interaction.guildId) return;
+	if (!interaction.guildId) return;
 
 	const cmd = commands.get(interaction.data?.name);
 	const btnAction = buttonsActions.get(interaction.data?.customId);

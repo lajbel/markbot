@@ -1,9 +1,4 @@
-import { 
-	sendInteractionResponse,
-	Bot,
-	DiscordInteractionResponseTypes,
-	DiscordenoInteraction,
-} from "../deps.ts";
+import { Bot, DiscordenoInteraction, DiscordInteractionResponseTypes, sendInteractionResponse } from "../deps.ts";
 
 export default function kaboomCommand() {
 	return {
@@ -17,7 +12,7 @@ export default function kaboomCommand() {
 
 			sendInteractionResponse(bot, interaction.id, interaction.token, {
 				type: DiscordInteractionResponseTypes.ChannelMessageWithSource,
-				data: {content: response},
+				data: { content: response },
 			});
 		},
 	};

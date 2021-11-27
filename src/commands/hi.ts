@@ -1,10 +1,4 @@
-import { 
-	sendInteractionResponse,
-	Bot,
-	ApplicationCommandOptionTypes,
-	DiscordenoInteraction,
-	DiscordInteractionResponseTypes
-} from "../deps.ts";
+import { ApplicationCommandOptionTypes, Bot, DiscordenoInteraction, DiscordInteractionResponseTypes, sendInteractionResponse } from "../deps.ts";
 
 export default function hiCommand() {
 	return {
@@ -19,9 +13,11 @@ export default function hiCommand() {
 			},
 		],
 		exe: (bot: Bot, interaction: DiscordenoInteraction) => {
+			const member = interaction?.data?.resolved?.members?.first() || interaction?.member
+			
 			sendInteractionResponse(bot, interaction.id, interaction.token, {
 				type: DiscordInteractionResponseTypes.ChannelMessageWithSource,
-				data: {content: `Oh hi ${(interaction.data.resolved.members.first() || interaction.member).nick}`},
+				data: { content: `Oh hi ${member?.nick}` },
 			});
 		},
 	};

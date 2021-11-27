@@ -32,6 +32,7 @@ Additionality, you can install [Velociraptor] for use vr scripts in `velocirapto
 ### .env
 
 Env file structure:
+
 ```env
 TOKEN=TOKENBOT
 ID=CLIENTID
@@ -42,13 +43,7 @@ ID=CLIENTID
 In `src/commands` make a new `.ts` file, and use this command template:
 
 ```ts
-import { 
-	sendInteractionResponse,
-	Bot,
-	DiscordenoInteraction, 
-	DiscordApplicationCommandOptionTypes, 
-	DiscordInteractionResponseTypes
-} from "../deps.ts";
+import { Bot, DiscordApplicationCommandOptionTypes, DiscordenoInteraction, DiscordInteractionResponseTypes, sendInteractionResponse } from "../deps.ts";
 
 export default function newCommand() {
 	return {
@@ -68,5 +63,5 @@ Your new command is automatically loaded by `mod.ts` and uploaded in a slash com
 
 ## Powered By 🚀
 
-[Discordeno 🦕](https://github.com/discordeno/discordeno) - Very very good lib for interact with Discord API <br> 
+[Discordeno 🦕](https://github.com/discordeno/discordeno) - Very very good lib for interact with Discord API <br>
 [Replit 🌀](https://replit.com) - Hosting of MarkBot (thanks to @slmjkdbtl)

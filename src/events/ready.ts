@@ -1,4 +1,4 @@
-import { editBotStatus, Bot, DiscordActivityTypes } from "../deps.ts";
+import { Bot, DiscordActivityTypes, editBotStatus } from "../deps.ts";
 
 export function ready(bot: Bot) {
 	console.log("ka-boom");
@@ -25,7 +25,7 @@ export function ready(bot: Bot) {
 					buttons: [
 						{
 							label: "Contribute",
-							url: "https://github.com/lajbel/markbot"
+							url: "https://github.com/lajbel/markbot",
 						},
 					],
 				},

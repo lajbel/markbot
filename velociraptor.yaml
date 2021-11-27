@@ -3,3 +3,5 @@ scripts:
   dev:
     cmd: deno run -A --no-check src/mod.ts
     watch: true
+  fmt:
+    cmd: deno fmt --config deno.json .

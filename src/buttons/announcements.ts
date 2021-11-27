@@ -1,11 +1,4 @@
-import {
-	addRole,
-	removeRole,
-	sendInteractionResponse,
-	Bot,
-	DiscordenoInteraction,
-	DiscordInteractionResponseTypes
-} from "../deps.ts";
+import { addRole, Bot, DiscordenoInteraction, DiscordInteractionResponseTypes, removeRole, sendInteractionResponse } from "../deps.ts";
 
 export default function announcementsButton() {
 	return {
@@ -20,7 +13,7 @@ export default function announcementsButton() {
 					sendInteractionResponse(bot, interaction.id, interaction.token, {
 						private: true,
 						type: DiscordInteractionResponseTypes.ChannelMessageWithSource,
-						data: {content: "Announcements role added"},
+						data: { content: "Announcements role added" },
 					});
 				});
 			} else {
@@ -28,7 +21,7 @@ export default function announcementsButton() {
 					sendInteractionResponse(bot, interaction.id, interaction.token, {
 						private: true,
 						type: DiscordInteractionResponseTypes.ChannelMessageWithSource,
-						data: {content: "Announcements role removed"},
+						data: { content: "Announcements role removed" },
 					});
 				});
 			}
