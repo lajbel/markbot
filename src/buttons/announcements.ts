@@ -1,6 +1,6 @@
-import { addRole, Bot, DiscordenoInteraction, DiscordInteractionResponseTypes, removeRole, sendInteractionResponse } from "../deps.ts";
+import { addRole, Bot, DiscordenoInteraction, InteractionResponseTypes, removeRole, sendInteractionResponse } from "../deps/discordeno.ts";
 
-export default function announcementsButton() {
+export default () => {
 	return {
 		name: "announcements_button",
 		exe: (bot: Bot, interaction: DiscordenoInteraction) => {
@@ -12,7 +12,7 @@ export default function announcementsButton() {
 				addRole(bot, guildId, member, role).then(() => {
 					sendInteractionResponse(bot, interaction.id, interaction.token, {
 						private: true,
-						type: DiscordInteractionResponseTypes.ChannelMessageWithSource,
+						type: InteractionResponseTypes.ChannelMessageWithSource,
 						data: { content: "Announcements role added" },
 					});
 				});
@@ -20,7 +20,7 @@ export default function announcementsButton() {
 				removeRole(bot, guildId, member, role).then(() => {
 					sendInteractionResponse(bot, interaction.id, interaction.token, {
 						private: true,
-						type: DiscordInteractionResponseTypes.ChannelMessageWithSource,
+						type: InteractionResponseTypes.ChannelMessageWithSource,
 						data: { content: "Announcements role removed" },
 					});
 				});

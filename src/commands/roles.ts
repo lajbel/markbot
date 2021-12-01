@@ -1,6 +1,6 @@
-import { Bot, ButtonStyles, DiscordenoInteraction, DiscordInteractionResponseTypes, DiscordMessageComponentTypes, sendInteractionResponse } from "../deps.ts";
+import { Bot, ButtonStyles, DiscordenoInteraction, InteractionResponseTypes, MessageComponentTypes, sendInteractionResponse } from "../deps/discordeno.ts";
 
-export default function rolesCommand() {
+export default () => {
 	return {
 		name: "roles",
 		description: "Get a role",
@@ -14,7 +14,7 @@ export default function rolesCommand() {
 
 			sendInteractionResponse(bot, interaction.id, interaction.token, {
 				private: true,
-				type: DiscordInteractionResponseTypes.ChannelMessageWithSource,
+				type: InteractionResponseTypes.ChannelMessageWithSource,
 				data: {
 					embeds: [embed],
 					components: [
@@ -22,14 +22,14 @@ export default function rolesCommand() {
 							type: 1,
 							components: [
 								{
-									type: DiscordMessageComponentTypes.Button,
+									type: MessageComponentTypes.Button,
 									label: "Helper",
 									customId: "helper_button",
 									style: ButtonStyles.Primary,
 									emoji: { id: "883793329647652934", name: "minimark" },
 								},
 								{
-									type: DiscordMessageComponentTypes.Button,
+									type: MessageComponentTypes.Button,
 									label: "Announcements",
 									customId: "announcements_button",
 									style: ButtonStyles.Primary,

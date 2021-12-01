@@ -1,6 +1,6 @@
-import { ApplicationCommandOptionTypes, Bot, DiscordenoInteraction, DiscordInteractionResponseTypes, sendInteractionResponse } from "../deps.ts";
+import { ApplicationCommandOptionTypes, Bot, DiscordenoInteraction, InteractionResponseTypes, sendInteractionResponse } from "../deps/discordeno.ts";
 
-export default function hiCommand() {
+export default () => {
 	return {
 		name: "hi",
 		description: "Oh hi",
@@ -16,7 +16,7 @@ export default function hiCommand() {
 			const member = interaction?.data?.resolved?.members?.first() || interaction?.member
 			
 			sendInteractionResponse(bot, interaction.id, interaction.token, {
-				type: DiscordInteractionResponseTypes.ChannelMessageWithSource,
+				type: InteractionResponseTypes.ChannelMessageWithSource,
 				data: { content: `Oh hi ${member?.nick}` },
 			});
 		},

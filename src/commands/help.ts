@@ -1,14 +1,14 @@
-import { Bot, ButtonStyles, DiscordenoInteraction, DiscordInteractionResponseTypes, DiscordMessageComponentTypes, sendInteractionResponse } from "../deps.ts";
+import { Bot, ButtonStyles, DiscordenoInteraction, InteractionResponseTypes, MessageComponentTypes, sendInteractionResponse } from "../deps/discordeno.ts";
+import { commands } from "../mod.ts";
 
-import { commandNames } from "../mod.ts";
-
-export default function helpCommand() {
+export default () => {
 	return {
 		name: "help",
 		description: "Get help of me",
 		options: [],
 		exe: (bot: Bot, interaction: DiscordenoInteraction) => {
-			const commands = commandNames.map((x: string) => "`" + x + "`").join(" - ");
+			const cmds: string[] = [];
+			commands.forEach((c) => cmds.push("`" + c.name + "`"));
 
 			const embed = {
 				color: 0xffe359,
@@ -17,14 +17,14 @@ export default function helpCommand() {
 				fields: [
 					{
 						name: "Commands",
-						value: commands,
+						value: cmds.join(" - "),
 						inline: false,
 					},
 				],
 			};
 
 			sendInteractionResponse(bot, interaction.id, interaction.token, {
-				type: DiscordInteractionResponseTypes.ChannelMessageWithSource,
+				type: InteractionResponseTypes.ChannelMessageWithSource,
 				data: {
 					embeds: [embed],
 					components: [
@@ -32,14 +32,14 @@ export default function helpCommand() {
 							type: 1,
 							components: [
 								{
-									type: DiscordMessageComponentTypes.Button,
+									type: MessageComponentTypes.Button,
 									label: "GitHub",
 									style: ButtonStyles.Link,
 									url: "https://github.com/lajbel/markbot",
-									emoji: { id: "913874395993366650", name: "github" },
+									emoji: { id: "915652987186217020", name: "github" },
 								},
 								{
-									type: DiscordMessageComponentTypes.Button,
+									type: MessageComponentTypes.Button,
 									label: "Replit",
 									style: ButtonStyles.Link,
 									url: "https://replit.com/@slmjkdbtl/markbot",

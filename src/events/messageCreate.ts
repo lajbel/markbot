@@ -1,4 +1,4 @@
-import { Bot, deleteMessage, DiscordenoMessage, sendMessage } from "../deps.ts";
+import { Bot, deleteMessage, DiscordenoMessage, sendMessage } from "../deps/discordeno.ts";
 
 export function messageCreate(bot: Bot, message: DiscordenoMessage) {
 	// anti-invites for users lol

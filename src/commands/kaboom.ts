@@ -1,6 +1,6 @@
-import { Bot, DiscordenoInteraction, DiscordInteractionResponseTypes, sendInteractionResponse } from "../deps.ts";
+import { Bot, DiscordenoInteraction, InteractionResponseTypes, sendInteractionResponse } from "../deps/discordeno.ts";
 
-export default function kaboomCommand() {
+export default () => {
 	return {
 		name: "kaboom",
 		description: "KaBoom!!!",
@@ -11,7 +11,7 @@ export default function kaboomCommand() {
 			const response = funnyKaboom[Math.floor(Math.random() * funnyKaboom.length)];
 
 			sendInteractionResponse(bot, interaction.id, interaction.token, {
-				type: DiscordInteractionResponseTypes.ChannelMessageWithSource,
+				type: InteractionResponseTypes.ChannelMessageWithSource,
 				data: { content: response },
 			});
 		},

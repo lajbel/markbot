@@ -1,12 +1,12 @@
-import { ApplicationCommandTypes, Bot, config, createBot, createSlashCommand, DotenvConfig, startBot } from "./deps.ts";
+import { createBot, createApplicationCommand, startBot, Bot, ApplicationCommandTypes, } from "./deps/discordeno.ts";
+import { config, DotenvConfig, } from "./deps/dotenv.ts";
 
-import { readDir } from "./util/readDir.ts";
-import { alive } from "./util/alive.ts";
+import { readDir, } from "./util/readDir.ts";
 
-import { interactionCreate } from "./events/interactionCreate.ts";
-import { messageCreate } from "./events/messageCreate.ts";
-import { messageDelete } from "./events/messageDelete.ts";
-import { ready } from "./events/ready.ts";
+import { interactionCreate, } from "./events/interactionCreate.ts";
+import { messageCreate, } from "./events/messageCreate.ts";
+import { messageDelete, } from "./events/messageDelete.ts";
+import { ready, } from "./events/ready.ts";
 
 const env: DotenvConfig = config();
 
@@ -35,31 +35,27 @@ const bot: Bot = createBot({
 
 // load interactions (commands and buttons)
 export const commands = new Map();
-export const commandNames: string[] = [];
 export const buttonsActions = new Map();
 
-readDir("src/commands", (file) => {
-	import(`./commands/${file.name}`).then((file: any) => {
-		const command = file.default();
+readDir("src/commands", async (file) => {
+	const cmd = await import(`./commands/${file.name}`);
+	const command = cmd.default();
 
-		createSlashCommand(bot, {
-			name: command.name,
-			description: command.description,
-			options: command.options,
-			type: ApplicationCommandTypes.ChatInput,
-		}, 883781994583056384n);
+	createApplicationCommand(bot, {
+		name: command.name,
+		description: command.description,
+		options: command.options,
+		type: ApplicationCommandTypes.ChatInput,
+	}, 883781994583056384n);
 
-		commands.set(command.name, command);
-		commandNames.push(command.name);
-	});
+	commands.set(command.name, command);
 });
 
-readDir("src/buttons", (file) => {
-	import(`./buttons/${file.name}`).then((file: any) => {
-		const button = file.default();
+readDir("src/buttons", async (file) => {
+	const btn = await import(`./buttons/${file.name}`);	
+	const button = btn.default();
 
-		buttonsActions.set(button.name, button);
-	});
+	buttonsActions.set(button.name, button);
 });
 
 // start bot

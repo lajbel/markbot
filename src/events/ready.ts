@@ -1,7 +1,9 @@
-import { Bot, DiscordActivityTypes, editBotStatus } from "../deps.ts";
+import { editBotStatus, getUser, Bot, ActivityTypes, } from "../deps/discordeno.ts";
 
-export function ready(bot: Bot) {
-	console.log("ka-boom");
+export async function ready(bot: Bot) {
+	const botUser = await getUser(bot, bot.id);
+
+	console.log(`Mark is online in ${botUser.username}#${botUser.discriminator}!`);
 
 	const funnyStatus = [
 		"Bean...",
@@ -20,7 +22,7 @@ export function ready(bot: Bot) {
 			activities: [
 				{
 					name: funnyStatus[Math.floor(Math.random() * funnyStatus.length)],
-					type: DiscordActivityTypes.Watching,
+					type: ActivityTypes.Watching,
 					createdAt: 0,
 					buttons: [
 						{

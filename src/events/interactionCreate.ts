@@ -1,5 +1,5 @@
 import { buttonsActions, commands } from "../mod.ts";
-import { Bot, DiscordenoInteraction } from "../deps.ts";
+import { Bot, DiscordenoInteraction } from "../deps/discordeno.ts";
 
 export function interactionCreate(bot: Bot, interaction: DiscordenoInteraction) {
 	// command only in guild

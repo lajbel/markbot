@@ -1,6 +1,6 @@
 // deno-lint-ignore-file no-explicit-any
 
-import { Bot, DiscordenoMessage, getUser, sendMessage } from "../deps.ts";
+import { Bot, DiscordenoMessage, getUser, sendMessage } from "../deps/discordeno.ts";
 
 import { config } from "../config.ts";
 
