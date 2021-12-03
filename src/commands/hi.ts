@@ -1,4 +1,4 @@
-import { ApplicationCommandOptionTypes, Bot, DiscordenoInteraction, InteractionResponseTypes, sendInteractionResponse } from "../deps/discordeno.ts";
+import { ApplicationCommandOptionTypes, Bot, DiscordenoInteraction, InteractionResponseTypes, sendInteractionResponse, getUser,  } from "../deps/discordeno.ts";
 
 export default () => {
 	return {
@@ -12,12 +12,13 @@ export default () => {
 				required: false,
 			},
 		],
-		exe: (bot: Bot, interaction: DiscordenoInteraction) => {
-			const member = interaction?.data?.resolved?.members?.first() || interaction?.member
+		exe: async (bot: Bot, interaction: DiscordenoInteraction) => {
+			const member = interaction?.data?.resolved?.members?.first() || interaction?.member;
+			const user = await getUser(bot, member?.id!);
 			
 			sendInteractionResponse(bot, interaction.id, interaction.token, {
 				type: InteractionResponseTypes.ChannelMessageWithSource,
-				data: { content: `Oh hi ${member?.nick}` },
+				data: { content: `Oh hi ${member?.nick ?? user?.username }` },
 			});
 		},
 	};

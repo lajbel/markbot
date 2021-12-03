@@ -21,15 +21,12 @@ const bot: Bot = createBot({
 	token: token,
 	botId: BigInt(id),
 	applicationId: BigInt(id),
+	intents: ["Guilds", "GuildMessages"],
 	events: {
 		interactionCreate,
 		messageCreate,
 		messageDelete,
 		ready,
-	},
-	intents: ["Guilds", "GuildMessages"],
-	cache: {
-		isAsync: false,
 	},
 });
 
