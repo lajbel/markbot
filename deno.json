@@ -2,12 +2,13 @@
 	"fmt": {
 		"files": {
 			"exclude": [
-				"velociraptor.yaml"
+				"velociraptor.yaml",
+				"src/deps/"
 			]
 		},
 		"options": {
 			"useTabs": true,
-			"lineWidth": 400,
+			"lineWidth": 160,
 			"indentWidth": 4,
 			"singleQuote": false,
 			"proseWrap": "preserve"

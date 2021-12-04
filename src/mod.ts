@@ -1,12 +1,12 @@
-import { createBot, createApplicationCommand, startBot, Bot, ApplicationCommandTypes, } from "./deps/discordeno.ts";
-import { config, DotenvConfig, } from "./deps/dotenv.ts";
+import { ApplicationCommandTypes, Bot, createApplicationCommand, createBot, startBot } from "./deps/discordeno.ts";
+import { config, DotenvConfig } from "./deps/dotenv.ts";
 
-import { readDir, } from "./util/readDir.ts";
+import { readDir } from "./util/readDir.ts";
 
-import { interactionCreate, } from "./events/interactionCreate.ts";
-import { messageCreate, } from "./events/messageCreate.ts";
-import { messageDelete, } from "./events/messageDelete.ts";
-import { ready, } from "./events/ready.ts";
+import { interactionCreate } from "./events/interactionCreate.ts";
+import { messageCreate } from "./events/messageCreate.ts";
+import { messageDelete } from "./events/messageDelete.ts";
+import { ready } from "./events/ready.ts";
 
 const env: DotenvConfig = config();
 
@@ -49,7 +49,7 @@ readDir("src/commands", async (file) => {
 });
 
 readDir("src/buttons", async (file) => {
-	const btn = await import(`./buttons/${file.name}`);	
+	const btn = await import(`./buttons/${file.name}`);
 	const button = btn.default();
 
 	buttonsActions.set(button.name, button);

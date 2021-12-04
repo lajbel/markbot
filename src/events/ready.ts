@@ -1,4 +1,4 @@
-import { editBotStatus, getUser, Bot, ActivityTypes, } from "../deps/discordeno.ts";
+import { ActivityTypes, Bot, editBotStatus, getUser } from "../deps/discordeno.ts";
 
 export async function ready(bot: Bot) {
 	const botUser = await getUser(bot, bot.id);

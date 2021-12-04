@@ -6,7 +6,12 @@ export default () => {
 		description: "KaBoom!!!",
 		options: [],
 		exe: (bot: Bot, interaction: DiscordenoInteraction) => {
-			const funnyKaboom = ["https://imgur.com/EFhRwqF.gif", "https://imgur.com/dZyIaSR.gif", "https://imgur.com/aYobVCy.gif", "https://imgur.com/BI875Rq.gif"];
+			const funnyKaboom = [
+				"https://imgur.com/EFhRwqF.gif",
+				"https://imgur.com/dZyIaSR.gif",
+				"https://imgur.com/aYobVCy.gif",
+				"https://imgur.com/BI875Rq.gif",
+			];
 
 			const response = funnyKaboom[Math.floor(Math.random() * funnyKaboom.length)];
 
@@ -16,4 +21,4 @@ export default () => {
 			});
 		},
 	};
-}
+};
