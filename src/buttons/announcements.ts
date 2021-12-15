@@ -10,19 +10,29 @@ export default () => {
 
 			if (!interaction.member?.roles.includes(role)) {
 				addRole(bot, guildId, member, role).then(() => {
-					sendInteractionResponse(bot, interaction.id, interaction.token, {
-						private: true,
-						type: InteractionResponseTypes.ChannelMessageWithSource,
-						data: { content: "Announcements role added" },
-					});
+					sendInteractionResponse(
+						bot,
+						interaction.id,
+						interaction.token,
+						{
+							private: true,
+							type: InteractionResponseTypes.ChannelMessageWithSource,
+							data: { content: "Announcements role added" },
+						},
+					);
 				});
 			} else {
 				removeRole(bot, guildId, member, role).then(() => {
-					sendInteractionResponse(bot, interaction.id, interaction.token, {
-						private: true,
-						type: InteractionResponseTypes.ChannelMessageWithSource,
-						data: { content: "Announcements role removed" },
-					});
+					sendInteractionResponse(
+						bot,
+						interaction.id,
+						interaction.token,
+						{
+							private: true,
+							type: InteractionResponseTypes.ChannelMessageWithSource,
+							data: { content: "Announcements role removed" },
+						},
+					);
 				});
 			}
 		},

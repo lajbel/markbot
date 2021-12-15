@@ -8,7 +8,7 @@
 		},
 		"options": {
 			"useTabs": true,
-			"lineWidth": 160,
+			"lineWidth": 80,
 			"indentWidth": 4,
 			"singleQuote": false,
 			"proseWrap": "preserve"

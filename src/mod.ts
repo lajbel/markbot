@@ -1,20 +1,23 @@
-import { ApplicationCommandTypes, Bot, createApplicationCommand, createBot, startBot } from "./deps/discordeno.ts";
+import {
+	ApplicationCommandTypes,
+	Bot,
+	createApplicationCommand,
+	createBot,
+	startBot,
+} from "./deps/discordeno.ts";
+
 import { config, DotenvConfig } from "./deps/dotenv.ts";
 
 import { readDir } from "./util/readDir.ts";
 
 import { interactionCreate } from "./events/interactionCreate.ts";
 import { messageCreate } from "./events/messageCreate.ts";
-import { messageDelete } from "./events/messageDelete.ts";
 import { ready } from "./events/ready.ts";
 
 const env: DotenvConfig = config();
 
-let token = env.TOKEN;
-let id = env.ID;
-
-if (!token) token = Deno.env.get("TOKEN")!;
-if (!id) id = Deno.env.get("ID")!;
+const token = env.TOKEN ? env.TOKEN : Deno.env.get("TOKEN")!;
+const id = env.ID ? env.ID : Deno.env.get("ID")!;
 
 // bot setup
 const bot: Bot = createBot({
@@ -25,7 +28,6 @@ const bot: Bot = createBot({
 	events: {
 		interactionCreate,
 		messageCreate,
-		messageDelete,
 		ready,
 	},
 });

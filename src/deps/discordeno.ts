@@ -1,5 +1,9 @@
 export {
+	ActivityTypes,
 	addRole,
+	ApplicationCommandOptionTypes,
+	ApplicationCommandTypes,
+	ButtonStyles,
 	channelOverwriteHasPermission,
 	createApplicationCommand,
 	createBot,
@@ -7,25 +11,21 @@ export {
 	editBotStatus,
 	getMember,
 	getUser,
+	InteractionResponseTypes,
+	MessageComponentTypes,
+	OverwriteTypes,
 	removeRole,
 	sendInteractionResponse,
 	sendMessage,
 	startBot,
-	ActivityTypes,
-	ApplicationCommandOptionTypes,
-	ApplicationCommandTypes,
-	ButtonStyles,
-	InteractionResponseTypes,
-	MessageComponentTypes,
-	OverwriteTypes,
 } from "https://deno.land/x/discordeno@13.0.0-rc11/mod.ts";
 
-export type { 
-	Bot, 
-	CreateGlobalApplicationCommand, 
-	DiscordenoInteraction, 
-	DiscordenoMember, 
-	DiscordenoMessage, 
+export type {
+	Bot,
+	CreateGlobalApplicationCommand,
+	DiscordenoInteraction,
+	DiscordenoMember,
+	DiscordenoMessage,
 	Embed,
-	GuildMember 
+	GuildMember,
 } from "https://deno.land/x/discordeno@13.0.0-rc11/mod.ts";

@@ -1,4 +1,10 @@
-import { sendInteractionResponse, Bot, DiscordenoInteraction, Embed, InteractionResponseTypes, } from "../deps/discordeno.ts";
+import {
+	Bot,
+	DiscordenoInteraction,
+	Embed,
+	InteractionResponseTypes,
+	sendInteractionResponse,
+} from "../deps/discordeno.ts";
 
 export default () => {
 	return {
@@ -8,6 +14,7 @@ export default () => {
 		exe: (bot: Bot, interaction: DiscordenoInteraction) => {
 			const tips = [
 				{ t: "npm i kaboom@next", img: null },
+				{ t: "kaboom({\nburp: true})", img: null },
 			];
 
 			const tip = tips[Math.floor(Math.random() * tips.length)];
@@ -18,12 +25,12 @@ export default () => {
 				description: tip.t,
 			};
 
-			if(tip.img) embed.image = { url: tip.img };
-			
+			if (tip.img) embed.image = { url: tip.img };
+
 			sendInteractionResponse(bot, interaction.id, interaction.token, {
 				type: InteractionResponseTypes.ChannelMessageWithSource,
-				data: { embeds: [ embed ] },
+				data: { embeds: [embed] },
 			});
 		},
 	};
-}
+};

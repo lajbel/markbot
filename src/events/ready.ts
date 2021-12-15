@@ -1,9 +1,16 @@
-import { ActivityTypes, Bot, editBotStatus, getUser } from "../deps/discordeno.ts";
+import {
+	ActivityTypes,
+	Bot,
+	editBotStatus,
+	getUser,
+} from "../deps/discordeno.ts";
 
 export async function ready(bot: Bot) {
 	const botUser = await getUser(bot, bot.id);
 
-	console.log(`Mark is online in ${botUser.username}#${botUser.discriminator}!`);
+	console.log(
+		`Mark is online in ${botUser.username}#${botUser.discriminator}!`,
+	);
 
 	const funnyStatus = [
 		"Bean...",
@@ -21,7 +28,9 @@ export async function ready(bot: Bot) {
 		editBotStatus(bot, {
 			activities: [
 				{
-					name: funnyStatus[Math.floor(Math.random() * funnyStatus.length)],
+					name: funnyStatus[
+						Math.floor(Math.random() * funnyStatus.length)
+					],
 					type: ActivityTypes.Watching,
 					createdAt: 0,
 					buttons: [
