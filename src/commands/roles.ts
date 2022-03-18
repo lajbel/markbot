@@ -1,9 +1,16 @@
-import { Bot, ButtonStyles, DiscordenoInteraction, InteractionResponseTypes, MessageComponentTypes, sendInteractionResponse } from "../deps/discordeno.ts";
+import { 
+	Bot, 
+	ButtonStyles, 
+	DiscordenoInteraction, 
+	InteractionResponseTypes, 
+	MessageComponentTypes, 
+	sendInteractionResponse 
+} from "../../deps.ts";
 
 export default () => {
 	return {
 		name: "roles",
-		description: "Get a role",
+		description: "Get a ka-role",
 		options: [],
 		exe: (bot: Bot, interaction: DiscordenoInteraction) => {
 			const embed = {
@@ -27,14 +34,14 @@ export default () => {
 									label: "Helper",
 									customId: "helper_button",
 									style: ButtonStyles.Primary,
-									emoji: { id: "883793329647652934", name: "minimark" },
+									emoji: { id: "884813519961342002", name: "kbmhearth" },
 								},
 								{
 									type: MessageComponentTypes.Button,
 									label: "Announcements",
 									customId: "announcements_button",
 									style: ButtonStyles.Primary,
-									emoji: { id: "884789264745897994", name: "cowmark" },
+									emoji: { id: "14611006838284310", name: "kbm_pineapple" },
 								},
 							],
 						},

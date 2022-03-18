@@ -25,8 +25,6 @@ export default () => {
 				description: tip.t,
 			};
 
-			if (tip.img) embed.image = { url: tip.img };
-
 			sendInteractionResponse(bot, interaction.id, interaction.token, {
 				type: InteractionResponseTypes.ChannelMessageWithSource,
 				data: { embeds: [embed] },

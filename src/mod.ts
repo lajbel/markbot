@@ -57,5 +57,4 @@ readDir("src/buttons", async (file) => {
 	buttonsActions.set(button.name, button);
 });
 
-// start bot
 startBot(bot);
