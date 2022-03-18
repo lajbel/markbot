@@ -1,22 +1,17 @@
-import {
-	Bot,
-	deleteMessage,
-	DiscordenoMessage,
-	sendMessage,
-} from "../deps/discordeno.ts";
+import { Bot, deleteMessage, DiscordenoMessage, sendMessage } from "../../deps.ts";
 
-export function messageCreate(bot: Bot, message: DiscordenoMessage) {
+export function messageCreate(bot: Bot, message: DiscordenoMessage): any {
+	const regAI = /(https:\/\/)?((discord|discordapp).((gg\/\w+)|(com\/(invite\/\w+))))/g;
+
 	// anti-invites for users lol
 	if (
-		message.content.match(
-			/(https:\/\/)?((discord|discordapp).((gg\/\w+)|(com\/(invite\/\w+))))/g,
-		)
+		message.content.match(regAI) &&
+		!message.member?.roles.includes(883786808062787594n)
 	) {
-		sendMessage(
-			bot,
-			message.channelId,
-			"No send invites!!! help <@632319035102462004>",
-		);
+		sendMessage(bot, message.channelId, {
+			content: "No send invites!!! help <@947683287369912330>",
+		});
+
 		deleteMessage(bot, message.channelId, message.id);
 	}
 }

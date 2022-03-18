@@ -3,27 +3,21 @@ import {
 	Bot,
 	createApplicationCommand,
 	createBot,
+	dotenv,
 	startBot,
-} from "./deps/discordeno.ts";
-
-import { config, DotenvConfig } from "./deps/dotenv.ts";
-
-import { readDir } from "./util/readDir.ts";
+} from "../deps.ts";
 
 import { interactionCreate } from "./events/interactionCreate.ts";
 import { messageCreate } from "./events/messageCreate.ts";
 import { ready } from "./events/ready.ts";
 
-const env: DotenvConfig = config();
+export const commands = new Map();
+export const buttonsActions = new Map();
 
-const token = env.TOKEN ? env.TOKEN : Deno.env.get("TOKEN")!;
-const id = env.ID ? env.ID : Deno.env.get("ID")!;
-
-// bot setup
-const bot: Bot = createBot({
-	token: token,
-	botId: BigInt(id),
-	applicationId: BigInt(id),
+export const bot: Bot = createBot({
+	token: dotenv().TOKEN || Deno.env.get("TOKEN")!,
+	botId: BigInt(dotenv().ID || BigInt(Deno.env.get("ID")!)),
+	applicationId: BigInt(dotenv().ID || BigInt(Deno.env.get("ID")!)),
 	intents: ["Guilds", "GuildMessages"],
 	events: {
 		interactionCreate,
@@ -32,11 +26,7 @@ const bot: Bot = createBot({
 	},
 });
 
-// load interactions (commands and buttons)
-export const commands = new Map();
-export const buttonsActions = new Map();
-
-readDir("src/commands", async (file) => {
+for await (const file of Deno.readDir("src/commands")) {
 	const cmd = await import(`./commands/${file.name}`);
 	const command = cmd.default();
 
@@ -48,13 +38,13 @@ readDir("src/commands", async (file) => {
 	}, 883781994583056384n);
 
 	commands.set(command.name, command);
-});
+}
 
-readDir("src/buttons", async (file) => {
+for await (const file of Deno.readDir("src/buttons")) {
 	const btn = await import(`./buttons/${file.name}`);
 	const button = btn.default();
 
 	buttonsActions.set(button.name, button);
-});
+}
 
 startBot(bot);

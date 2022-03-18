@@ -1,9 +1,14 @@
-import { Bot, DiscordenoInteraction, InteractionResponseTypes, sendInteractionResponse } from "../deps/discordeno.ts";
+import {
+	Bot,
+	DiscordenoInteraction,
+	InteractionResponseTypes,
+	sendInteractionResponse,
+} from "../../deps.ts";
 
 export default () => {
 	return {
 		name: "kaboom",
-		description: "KaBoom!!!",
+		description: "make a ka-boom!!!",
 		options: [],
 		exe: (bot: Bot, interaction: DiscordenoInteraction) => {
 			const funnyKaboom = [

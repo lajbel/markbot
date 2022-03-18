@@ -1,9 +1,4 @@
-import {
-	ActivityTypes,
-	Bot,
-	editBotStatus,
-	getUser,
-} from "../deps/discordeno.ts";
+import { ActivityTypes, Bot, editBotStatus, getUser } from "../../deps.ts";
 
 export async function ready(bot: Bot) {
 	const botUser = await getUser(bot, bot.id);
@@ -13,15 +8,16 @@ export async function ready(bot: Bot) {
 	);
 
 	const funnyStatus = [
-		"Bean...",
-		"Your mom",
+		"Bean is cool",
+		"KABOOM",
 		"Kaboom Server",
 		"Family Friendly Words",
 		"Powerful",
-		"Kajam 2025",
+		"KaJam 2025",
 		"discord.gg/kaboom",
-		"Mark Z",
-		"Kaboom 6969",
+		"Markz",
+		"Increible Games",
+		"a",
 	];
 
 	function editFunnyStatus() {

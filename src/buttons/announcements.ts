@@ -1,4 +1,11 @@
-import { addRole, Bot, DiscordenoInteraction, InteractionResponseTypes, removeRole, sendInteractionResponse } from "../deps/discordeno.ts";
+import {
+	addRole,
+	Bot,
+	DiscordenoInteraction,
+	InteractionResponseTypes,
+	removeRole,
+	sendInteractionResponse,
+} from "../../deps.ts";
 
 export default () => {
 	return {
