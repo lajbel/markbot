@@ -27,6 +27,9 @@ export default () => {
 				{
 					t: "you can use these fonts in your kaboom game without import anything: `apl386`, `apl386o`, `sink`, `sinko`",
 				},
+				{
+					t: "you can sell your Kaboom game thanks to the MIT License",
+				},
 			];
 
 			const tip = tips[Math.floor(Math.random() * tips.length)];
