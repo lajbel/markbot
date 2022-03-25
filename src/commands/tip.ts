@@ -14,7 +14,7 @@ export default () => {
 		exe: (bot: Bot, interaction: DiscordenoInteraction) => {
 			const tips = [
 				{
-					t: "`npm i kaboom@next` if you want to install the latest dev release that comes with new features (might be unstable and contain breaking change!)",
+					t: "`npm i kaboom@next` to install the latest dev release that comes with new features (might be unstable and contain breaking change!)",
 					img: null,
 				},
 				{
