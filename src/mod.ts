@@ -12,7 +12,7 @@ import { messageCreate } from "./events/messageCreate.ts";
 import { ready } from "./events/ready.ts";
 
 export const commands = new Map();
-export const buttonsActions = new Map();
+export const components = new Map();
 
 export const bot: Bot = createBot({
 	token: dotenv().TOKEN || Deno.env.get("TOKEN")!,
@@ -40,11 +40,11 @@ for await (const file of Deno.readDir("src/commands")) {
 	commands.set(command.name, command);
 }
 
-for await (const file of Deno.readDir("src/buttons")) {
-	const btn = await import(`./buttons/${file.name}`);
-	const button = btn.default();
+for await (const file of Deno.readDir("src/components")) {
+	const cmp = await import(`./components/${file.name}`);
+	const component = cmp.default();
 
-	buttonsActions.set(button.name, button);
+	components.set(component.name, component);
 }
 
 startBot(bot);

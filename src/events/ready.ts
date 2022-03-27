@@ -18,6 +18,7 @@ export async function ready(bot: Bot) {
 		"Markz",
 		"Increible Games",
 		"a",
+		"Mark Jam",
 	];
 
 	function editFunnyStatus() {

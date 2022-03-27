@@ -1,4 +1,4 @@
-import { buttonsActions, commands } from "../mod.ts";
+import { commands, components } from "../mod.ts";
 import { Bot, DiscordenoInteraction } from "../../deps.ts";
 
 export function interactionCreate(
@@ -9,8 +9,8 @@ export function interactionCreate(
 	if (!interaction.guildId) return;
 
 	const cmd = commands.get(interaction.data?.name);
-	const btnAction = buttonsActions.get(interaction.data?.customId);
+	const cpm = components.get(interaction.data?.customId);
 
 	if (cmd) return cmd.exe(bot, interaction);
-	else if (btnAction) return btnAction.exe(bot, interaction);
+	else if (cpm) return cpm.exe(bot, interaction);
 }

@@ -26,9 +26,8 @@ export type {
 	DiscordenoMessage,
 	Embed,
 	GuildMember,
-	DiscordSelectMenuComponent,
-	DiscordSelectOption,
 	MessageComponents,
+	SelectMenuComponent,
 } from "https://deno.land/x/discordeno@13.0.0-rc22/mod.ts";
 
 export { config as dotenv } from "https://deno.land/x/dotenv/mod.ts";
