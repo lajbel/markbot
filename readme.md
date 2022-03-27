@@ -4,7 +4,7 @@ Mark Bot is a Discord Bot for moderate, configurate and give fun in the [Kaboom]
 
 ![mark](markbot.png)
 
-[**Fork in Replit**](https://replit.com/@lajbel/denomark) **-** [**Discord Server**](https://discord.com/invite/aQ6RuQm3TF)
+[**Fork in Replit**](https://replit.com/@slmjkdbtl/markbot#src/mod.ts) **-** [**Kaboom Discord Server**](https://discord.com/invite/aQ6RuQm3TF)
 
 ## Contribute 🎉
 
@@ -13,6 +13,7 @@ Make commits that are useful, make sure it works well and don't try to give your
 ### Cool Commits
 
 - New commands and interactions
+- New tips
 - Fix bugs or typo
 
 ## Build 🏗️
@@ -43,7 +44,13 @@ ID=CLIENTID
 In `src/commands` make a new `.ts` file, and use this command template:
 
 ```ts
-import { Bot, DiscordApplicationCommandOptionTypes, DiscordenoInteraction, DiscordInteractionResponseTypes, sendInteractionResponse } from "../deps.ts";
+import {
+	Bot,
+	DiscordApplicationCommandOptionTypes,
+	DiscordenoInteraction,
+	DiscordInteractionResponseTypes,
+	sendInteractionResponse,
+} from "../deps.ts";
 
 export default function newCommand() {
 	return {
@@ -63,5 +70,5 @@ Your new command is automatically loaded by `mod.ts` and uploaded in a slash com
 
 ## Powered By 🚀
 
-[Discordeno 🦕](https://github.com/discordeno/discordeno) - Very very good lib for interact with Discord API <br>
+[Discordeno 🦕](https://github.com/discordeno/discordeno) - Lib for interact with Discord API <br>
 [Replit 🌀](https://replit.com) - Hosting of MarkBot (thanks to @slmjkdbtl)
