@@ -11,7 +11,7 @@ export default () => {
 	return {
 		name: "markjamchoose",
 		exe: (bot: Bot, interaction: DiscordenoInteraction) => {
-			const game = await (fetch('https://itch.io/jam/317800/entries.json').then(res => res.json())).jam_games.filter({game} => game.id == interaction.data.values[0])[0]
+			const game = await (fetch('https://itch.io/jam/317800/entries.json').then(res => res.json())).jam_games.filter(({game}) => game.id == interaction.data.values[0])[0]
 
       sendInteractionResponse(bot, interaction.id, interaction.token, {
         type: 7,
