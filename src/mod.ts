@@ -9,6 +9,7 @@ import {
 
 import { interactionCreate } from "./events/interactionCreate.ts";
 import { messageCreate } from "./events/messageCreate.ts";
+import { messageCreate } from "./events/messageUpdate.ts";
 import { ready } from "./events/ready.ts";
 
 export const commands = new Map();
@@ -23,6 +24,7 @@ export const bot: Bot = createBot({
 		interactionCreate,
 		messageCreate,
 		ready,
+		messageUpdate,
 	},
 });
 
