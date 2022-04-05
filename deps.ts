@@ -30,6 +30,6 @@ export type {
 	SelectMenuComponent,
 } from "https://deno.land/x/discordeno@13.0.0-rc22/mod.ts";
 
-export { config as dotenv } from "https://deno.land/x/dotenv/mod.ts";
+export { config as dotenv } from "https://deno.land/x/dotenv@v3.1.0/mod.ts";
 
-export type { DotenvConfig } from "https://deno.land/x/dotenv/mod.ts";
+export type { DotenvConfig } from "https://deno.land/x/dotenv@v3.1.0/mod.ts";

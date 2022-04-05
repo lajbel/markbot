@@ -10,6 +10,7 @@ import {
 export default () => {
 	return {
 		name: "hi",
+		type: 1,
 		description: "ohhi",
 		options: [
 			{

@@ -28,6 +28,7 @@ const tips = [
 export default () => {
 	return {
 		name: "tip",
+		type: 1,
 		description: "get a tip about the Kaboom World",
 		options: [
 			{

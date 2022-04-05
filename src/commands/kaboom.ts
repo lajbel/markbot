@@ -8,6 +8,7 @@ import {
 export default () => {
 	return {
 		name: "kaboom",
+		type: 1,
 		description: "make a ka-boom!!!",
 		options: [],
 		exe: (bot: Bot, interaction: DiscordenoInteraction) => {

@@ -1,11 +1,20 @@
 import { ActivityTypes, Bot, editBotStatus, getUser } from "../../deps.ts";
+import { important } from "../util/logger.ts";
 
 export async function ready(bot: Bot) {
 	const botUser = await getUser(bot, bot.id);
 
-	console.log(
-		`Mark is online in ${botUser.username}#${botUser.discriminator}!`,
-	);
+	important(`markbot is online in ${botUser.username}#${botUser.discriminator}!`);
+
+	console.log(`	                                           
+_____ _____ _____ _____ _____ _____ _____ 
+|     |  _  | __  |  |  | __  |     |_   _|
+| | | |     |    -|    -| __ -|  |  | | |  
+|_|_|_|__|__|__|__|__|__|_____|_____| |_|  
+												 
+
+MarkBot © Licensed by Bean Tecnologies & Co.
+	`);
 
 	const funnyStatus = [
 		"Bean is cool",

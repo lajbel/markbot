@@ -1,11 +1,6 @@
-import {
-	ApplicationCommandTypes,
-	Bot,
-	createApplicationCommand,
-	createBot,
-	dotenv,
-	startBot,
-} from "../deps.ts";
+import { Bot, createApplicationCommand, createBot, dotenv, startBot } from "../deps.ts";
+
+import { cmdlog } from "./util/logger.ts";
 
 import { interactionCreate } from "./events/interactionCreate.ts";
 import { messageCreate } from "./events/messageCreate.ts";
@@ -36,10 +31,12 @@ for await (const file of Deno.readDir("src/commands")) {
 		name: command.name,
 		description: command.description,
 		options: command.options,
-		type: ApplicationCommandTypes.ChatInput,
+		type: command.type,
 	}, 883781994583056384n);
 
 	commands.set(command.name, command);
+
+	cmdlog("command loaded: " + command.name);
 }
 
 for await (const file of Deno.readDir("src/components")) {

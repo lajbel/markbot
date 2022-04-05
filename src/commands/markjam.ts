@@ -11,6 +11,7 @@ import {
 export default () => {
 	return {
 		name: "markjam",
+		type: 1,
 		description: "get info about mark jam",
 		exe: async (bot: Bot, interaction: DiscordenoInteraction) => {
 			const embed: Embed = {

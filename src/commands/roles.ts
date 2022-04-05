@@ -10,6 +10,7 @@ import {
 export default () => {
 	return {
 		name: "roles",
+		type: 1,
 		description: "get a ka-role",
 		options: [],
 		exe: (bot: Bot, interaction: DiscordenoInteraction) => {
