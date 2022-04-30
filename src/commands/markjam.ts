@@ -1,11 +1,28 @@
 import { MessageComponentPayload, MessageComponentType } from "../../deps.ts";
 import { MarkCommand } from "../types/command.ts";
+import { jams } from "../util/jams.ts";
 
 const cmd: MarkCommand = {
 	name: "markjam",
 	description: "get info about mark jam",
+	options: [{
+		name: "jam",
+		type: "NUMBER",
+		description: "the markjam edition",
+		choices: [
+			{
+				name: "Mark Jam 1: Mark a Mark Game",
+				value: 0,
+			},
+			{
+				name: "Mark Jam 2: Into Space 🚀",
+				value: 1,
+			},
+		],
+		required: true,
+	}],
 	exe: async (interaction) => {
-		const entries = await (await (await fetch("https://itch.io/jam/317800/entries.json"))
+		const entries = await (await (await fetch(`https://itch.io/jam/${jams[interaction.options?.[0].value]}/entries.json`))
 			.json()).jam_games;
 
 		const select: MessageComponentPayload = {

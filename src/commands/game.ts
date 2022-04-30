@@ -10,6 +10,8 @@ const cmd: MarkCommand = {
 
 		const game = games[Math.floor(Math.random() * games.length)];
 
+		console.log(game);
+
 		interaction.respond({
 			embeds: [{
 				color: 0xffe359,

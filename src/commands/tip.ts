@@ -29,7 +29,7 @@ const cmd: MarkCommand = {
 		},
 	],
 	exe: (interaction) => {
-		const tip = tips[interaction.options[0]?.value] || tips[Math.floor(Math.random() * tips.length)];
+		const tip = tips[interaction.options[0]?.value - 1] || tips[Math.floor(Math.random() * tips.length)];
 
 		interaction.respond({
 			embeds: [{

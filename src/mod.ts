@@ -11,6 +11,7 @@ export const db = new ReplDB(Deno.env.get("REPLIT_DB_URL") || config().REPLIT_DB
 client.connect(Deno.env.get("DISCORD_TOKEN") || config().DISCORD_TOKEN, [
 	GatewayIntents.GUILDS,
 	GatewayIntents.GUILD_MESSAGES,
+	GatewayIntents.GUILD_MEMBERS,
 ]);
 
 for await (const file of Deno.readDir("src/events")) {
