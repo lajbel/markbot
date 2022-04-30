@@ -1,19 +1,17 @@
-# Mark Bot 🤖
+<img src="https://imgur.com/pmAkJ18.png" />
 
-Mark Bot is a Discord Bot for moderate, configurate and give fun in the [Kaboom](https://github.com/replit/kaboom) Discord Server
-
-![mark](markbot.png)
+Mark Bot is a Discord Bot for give fun and moderate the **[Kaboom](https://github.com/replit/kaboom) Discord Server**
 
 [**Fork in Replit**](https://replit.com/@slmjkdbtl/markbot#src/mod.ts) **-** [**Kaboom Discord Server**](https://discord.com/invite/aQ6RuQm3TF)
 
 ## Contribute 🎉
 
-Make commits that are useful, make sure it works well and don't try to give yourself privileges or try to break the operation
+Make commits that are useful, make sure it works well and don't try to give yourself privileges or try to break the bot
 
 ### Cool Commits
 
-- New commands and interactions
-- New tips
+- New FUN commands
+- New content for `/kaboom` or `/tip`
 - Fix bugs or typo
 
 ## Build 🏗️
@@ -30,45 +28,40 @@ deno run -A  source/mod.ts
 
 Additionality, you can install [Velociraptor] for use vr scripts in `velociraptor.yaml` like `vr dev`
 
-### .env
+**ENV Variables**
 
-Env file structure:
+Token: Discord Client token
 
-```env
-TOKEN=TOKENBOT
-ID=CLIENTID
-```
-
-### Add a Command
+### Add a command
 
 In `src/commands` make a new `.ts` file, and use this command template:
 
 ```ts
-import {
-	Bot,
-	DiscordApplicationCommandOptionTypes,
-	DiscordenoInteraction,
-	DiscordInteractionResponseTypes,
-	sendInteractionResponse,
-} from "../deps.ts";
+import { MarkCommand } from "../types/command.ts";
 
-export default function newCommand() {
-	return {
-		name: "newCommand",
-		description: "A new cool command for MarkBot",
-		options: [
-			/* Your command options */
-		],
-		exe: (bot: Bot, interaction: DiscordenoInteraction) => {
-			console.log("my new command is here");
+const cmd: MarkCommand = {
+	name: "hi",
+	description: "say hi",
+	options: [
+		{
+			name: "user",
+			description: "User for say hi",
+			type: "USER",
+			required: false,
 		},
-	};
-}
+	],
+	exe: (interaction) => {
+		// epic things
+	},
+};
+
+export default cmd;
 ```
 
-Your new command is automatically loaded by `mod.ts` and uploaded in a slash command
+Your new command is automatically loaded by `mod.ts`.
 
 ## Powered By 🚀
 
-[Discordeno 🦕](https://github.com/discordeno/discordeno) - Lib for interact with Discord API <br>
-[Replit 🌀](https://replit.com) - Hosting of MarkBot (thanks to @slmjkdbtl)
+[Harmony 🦕](https://deno.land/harmony) - Cool library for interact with Discord API <br>
+[Replit 🌀](https://replit.com) - Hosting of MarkBot thanks to [tga](https://github.com/slmjkdbtl), Kaboom creator <br>
+[Kaboom Discord 💥](discord.gg/aq6ruqm3tf) - Official Kaboom Discord, develop indie games now are fun and easy
