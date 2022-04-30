@@ -1,30 +1,18 @@
-import {
-	Bot,
-	DiscordenoInteraction,
-	InteractionResponseTypes,
-	sendInteractionResponse,
-} from "../../deps.ts";
+import { MarkCommand } from "../types/command.ts";
 
-export default () => {
-	return {
-		name: "kaboom",
-		type: 1,
-		description: "make a ka-boom!!!",
-		options: [],
-		exe: (bot: Bot, interaction: DiscordenoInteraction) => {
-			const funnyKaboom = [
-				"https://imgur.com/EFhRwqF.gif",
-				"https://imgur.com/dZyIaSR.gif",
-				"https://imgur.com/aYobVCy.gif",
-				"https://imgur.com/BI875Rq.gif",
-			];
+const cmd: MarkCommand = {
+	name: "kaboom",
+	description: "make a kaboom!!! 💥",
+	exe: (interaction) => {
+		const kabooms = [
+			"https://imgur.com/EFhRwqF.gif",
+			"https://imgur.com/dZyIaSR.gif",
+			"https://imgur.com/aYobVCy.gif",
+			"https://imgur.com/BI875Rq.gif",
+		];
 
-			const response = funnyKaboom[Math.floor(Math.random() * funnyKaboom.length)];
-
-			sendInteractionResponse(bot, interaction.id, interaction.token, {
-				type: InteractionResponseTypes.ChannelMessageWithSource,
-				data: { content: response },
-			});
-		},
-	};
+		interaction.reply(kabooms[Math.floor(Math.random() * kabooms.length)]);
+	},
 };
+
+export default cmd;

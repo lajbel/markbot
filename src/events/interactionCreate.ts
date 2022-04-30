@@ -1,16 +1,17 @@
-import { commands, components } from "../mod.ts";
-import { Bot, DiscordenoInteraction } from "../../deps.ts";
+import { client, commands, components } from "../mod.ts";
 
-export function interactionCreate(
-	bot: Bot,
-	interaction: DiscordenoInteraction,
-) {
-	// command only in guild
-	if (!interaction.guildId) return;
+export default client.on("interactionCreate", (interaction) => {
+	if (!interaction.guild) return;
 
-	const cmd = commands.get(interaction.data?.name);
-	const cpm = components.get(interaction.data?.customId);
+	if (interaction.isApplicationCommand()) {
+		const cmd = commands.get(interaction.data?.name);
 
-	if (cmd) return cmd.exe(bot, interaction);
-	else if (cpm) return cpm.exe(bot, interaction);
-}
+		if (cmd) return cmd.exe(interaction);
+	}
+
+	if (interaction.isMessageComponent()) {
+		const cpm = components.get(interaction.data?.custom_id);
+
+		if (cpm) return cpm(interaction);
+	}
+});

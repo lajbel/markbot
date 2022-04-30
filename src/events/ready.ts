@@ -1,10 +1,8 @@
-import { ActivityTypes, Bot, editBotStatus, getUser } from "../../deps.ts";
+import { client } from "../mod.ts";
 import { important } from "../util/logger.ts";
 
-export async function ready(bot: Bot) {
-	const botUser = await getUser(bot, bot.id);
-
-	important(`markbot is online in ${botUser.username}#${botUser.discriminator}!`);
+export default client.on("ready", () => {
+	important(`markbot is online in ${client.user?.tag}!`);
 
 	console.log(`	                                           
 _____ _____ _____ _____ _____ _____ _____ 
@@ -17,36 +15,30 @@ MarkBot © Licensed by Bean Tecnologies & Co.
 	`);
 
 	const funnyStatus = [
-		"Bean is cool",
 		"KABOOM",
+		"BEAN",
 		"Kaboom Server",
+		"Kaboom Playground",
 		"Family Friendly Words",
 		"Powerful",
-		"KaJam 2025",
-		"discord.gg/kaboom",
-		"Markz",
+		"KaJam 2069",
+		"kaboomjs.com",
+		"buying FIREWORKS in kaboom.com",
+		"twitter.com/kaboomjs",
+		"discord.gg/kaboom in a future",
+		"Mark",
 		"Increible Games",
-		"a",
-		"Mark Jam",
+		"Mark Jam 2: INTO SPACE",
+		"New Kaboom games on Itch.io",
+		"New Kaboom games on Newgrounds.com",
+		"Replit Kaboom Template",
+		"How many Marks are needed for change a 💡",
 	];
 
 	function editFunnyStatus() {
-		editBotStatus(bot, {
-			activities: [
-				{
-					name: funnyStatus[
-						Math.floor(Math.random() * funnyStatus.length)
-					],
-					type: ActivityTypes.Watching,
-					createdAt: 0,
-					buttons: [
-						{
-							label: "Contribute",
-							url: "https://github.com/lajbel/markbot",
-						},
-					],
-				},
-			],
+		client.setPresence({
+			name: funnyStatus[Math.floor(Math.random() * funnyStatus.length)],
+			type: "WATCHING",
 			status: "online",
 		});
 	}
@@ -56,4 +48,4 @@ MarkBot © Licensed by Bean Tecnologies & Co.
 	}, 120000);
 
 	editFunnyStatus();
-}
+});

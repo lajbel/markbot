@@ -25,3 +25,8 @@ export const cmdlog = timber({
 	name: { text: () => "🧨", style: brightRed },
 	log: console.log,
 });
+
+export const eventlog = timber({
+	name: { text: () => "🧨", style: brightRed },
+	log: console.log,
+});

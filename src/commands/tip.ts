@@ -1,11 +1,4 @@
-import {
-	ApplicationCommandOptionTypes,
-	Bot,
-	DiscordenoInteraction,
-	Embed,
-	InteractionResponseTypes,
-	sendInteractionResponse,
-} from "../../deps.ts";
+import { MarkCommand } from "../types/command.ts";
 
 const tips = [
 	{
@@ -25,34 +18,27 @@ const tips = [
 	},
 ];
 
-export default () => {
-	return {
-		name: "tip",
-		type: 1,
-		description: "get a tip about the Kaboom World",
-		options: [
-			{
-				type: ApplicationCommandOptionTypes.Number,
-				name: "number",
-				description: `tip number - 1-${tips.length}`,
-				required: false,
-			},
-		],
-		exe: (bot: Bot, interaction: DiscordenoInteraction) => {
-			const tip =
-				tips[Number(interaction?.data?.options?.[0].value?.toString()) - 1] ||
-				tips[Math.floor(Math.random() * tips.length)];
-
-			const embed: Embed = {
-				color: 0xffe359,
-				title: "Kaboom TIP",
-				description: tip.t,
-			};
-
-			sendInteractionResponse(bot, interaction.id, interaction.token, {
-				type: InteractionResponseTypes.ChannelMessageWithSource,
-				data: { embeds: [embed] },
-			});
+const cmd: MarkCommand = {
+	name: "tip",
+	description: "get a tip about the Kaboom World",
+	options: [
+		{
+			name: "tip",
+			description: `tip number from 1 to ${tips.length}`,
+			type: "NUMBER",
 		},
-	};
+	],
+	exe: (interaction) => {
+		const tip = tips[interaction.options[0]?.value] || tips[Math.floor(Math.random() * tips.length)];
+
+		interaction.respond({
+			embeds: [{
+				color: 0xffe359,
+				title: "Kaboom TIP 💥",
+				description: tip.t,
+			}],
+		});
+	},
 };
+
+export default cmd;

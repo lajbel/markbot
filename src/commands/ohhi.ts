@@ -1,24 +1,13 @@
-import {
-	Bot,
-	DiscordenoInteraction,
-	InteractionResponseTypes,
-	sendInteractionResponse,
-} from "../../deps.ts";
+import { MarkCommand } from "../types/command.ts";
 
-export default () => {
-	return {
-		name: "say ohhi",
-		type: 3,
-		exe: (bot: Bot, interaction: DiscordenoInteraction) => {
-			const msg = interaction.data?.resolved?.messages?.array()[0];
+const cmd: MarkCommand = {
+	name: "say hi",
+	type: "MESSAGE",
+	exe: (interaction) => {
+		const user = interaction.resolved.messages[Object.keys(interaction.resolved.messages)[0]].author;
 
-			sendInteractionResponse(bot, interaction.id, interaction.token, {
-				type: InteractionResponseTypes.ChannelMessageWithSource,
-				data: {
-					content: `<:oh:952678706927775784><:hi:952678717526798398> <@${msg
-						?.authorId}>`,
-				},
-			});
-		},
-	};
+		interaction.reply(`<:oh:952678706927775784><:hi:952678717526798398> <@${user.id}>`);
+	},
 };
+
+export default cmd;

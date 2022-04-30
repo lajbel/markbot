@@ -1,17 +1,15 @@
-import { Bot, deleteMessage, DiscordenoMessage, sendMessage } from "../../deps.ts";
+import { client } from "../mod.ts";
 
-export function messageCreate(bot: Bot, message: DiscordenoMessage): any {
+export default client.on("messageCreate", async (message) => {
 	const regAI = /(https:\/\/)?((discord|discordapp).((gg\/\w+)|(com\/(invite\/\w+))))/g;
 
-	// anti-invites for users lol
+	// anti-invites
 	if (
 		message.content.match(regAI) &&
-		!message.member?.roles.includes(883786808062787594n)
+		!await message.member?.roles.get("883786808062787594")
 	) {
-		sendMessage(bot, message.channelId, {
-			content: "No send invites!!! help <@947683287369912330>",
-		});
+		message.channel.send("Don't send invites - <@947683287369912330>");
 
-		deleteMessage(bot, message.channelId, message.id);
+		message.delete();
 	}
-}
+});
