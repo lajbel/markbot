@@ -1,12 +1,12 @@
 import { MarkComponent } from "../types/component.ts";
+import { jams } from "../util/jams.ts";
 
 const cpm: MarkComponent = async (interaction) => {
 	if (interaction.data.values?.[0] == "noGames") return interaction.reply("no games <:horrormark:918301111826407546>");
 
-	const game =
-		(await (fetch("https://itch.io/jam/317800/entries.json").then((res) => res.json()))).jam_games.filter(({ game }) =>
-			game.id == interaction.data?.values?.[0]
-		)[0].game;
+	const game = (await (fetch(`https://itch.io/jam/${interaction.data.values?.[0].split("/")[1]}/entries.json`).then((res) => res.json()))).jam_games.filter((
+		{ game },
+	) => game.id == interaction.data?.values?.[0].split("/")[0])[0].game;
 
 	interaction.respond({
 		embeds: [{

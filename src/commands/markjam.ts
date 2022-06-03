@@ -38,7 +38,7 @@ const cmd: MarkCommand = {
 					select.options?.push({
 						label: entry.game.title,
 						description: entry.game.short_text,
-						value: entry.game.id,
+						value: entry.game.id + "/" + jams[interaction.options?.[0].value],
 					});
 				}
 			});
