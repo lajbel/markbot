@@ -8,8 +8,7 @@ const cmd: MarkCommand = {
 			embeds: [{
 				color: 0xffe359,
 				title: "Roles of Kaboom Discord",
-				description:
-					"<@&901298683906240582> - You will be mentioned by people who need help\n<@&901533627802873876> - You will be mentioned for announcements",
+				description: "Select a role in the below list. Re-select if you want to remove the role.",
 			}],
 			components: [{
 				type: "ACTION_ROW",
