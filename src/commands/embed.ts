@@ -51,10 +51,7 @@ const cmd: MarkCommand = {
 	],
 	defaultPermission: false,
 	exe: async (interaction) => {
-		interaction.reply("embed created and sented");
-
 		const channel = (await interaction.guild?.channels.get(interaction.options?.find((c) => c.name === "channel")?.value)) || interaction.channel;
-
 		if (!channel?.isText()) return;
 
 		channel.send({
@@ -62,11 +59,18 @@ const cmd: MarkCommand = {
 				color: 0xffe359,
 				title: interaction.options?.find((c) => c.name === "title")?.value || "",
 				description: interaction.options?.find((c) => c.name === "description")?.value.replaceAll("\\n", `\n`) || "",
-				image: { url: interaction.options?.find((c) => c.name === "image")?.value || "" },
-				thumbnail: { url: interaction.options?.find((c) => c.name === "thumbnail")?.value || "" },
+				image: {
+					url: interaction.options?.find((c) => c.name === "image" && c.value.startsWith("https://") || c.value.startsWith("http://"))?.value || "",
+				},
+				thumbnail: {
+					url: interaction.options?.find((c) => c.name === "thumbnail" && c.value.startsWith("https://") || c.value.startsWith("http://"))?.value ||
+						"",
+				},
 				footer: { text: interaction.options?.find((c) => c.name === "footer")?.value || "" },
 			}],
 		});
+
+		interaction.reply("embed created and sent");
 	},
 };
 
