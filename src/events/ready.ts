@@ -23,7 +23,7 @@ MarkBot © Licensed by Bean Tecnologies & Co.
 		"Powerful",
 		"KaJam 2069",
 		"kaboomjs.com",
-		"buying FIREWORKS in kaboom.com",
+		"FIREWORKS in kaboom.com",
 		"twitter.com/kaboomjs",
 		"discord.gg/kaboom in a future",
 		"Mark",
@@ -33,6 +33,13 @@ MarkBot © Licensed by Bean Tecnologies & Co.
 		"New Kaboom games on Newgrounds.com",
 		"Replit Kaboom Template",
 		"How many Marks are needed for change a 💡",
+		"Kajam 2022",
+		"A butterlfy",
+		"DaInfLoop is a bot",
+		"tga are afk",
+		"Insanyn English class",
+		"New Kaboom games on replit.com/community/kaboom",
+		"Mark Jam Winners",
 	];
 
 	function editFunnyStatus() {
@@ -45,7 +52,7 @@ MarkBot © Licensed by Bean Tecnologies & Co.
 
 	setInterval(() => {
 		editFunnyStatus();
-	}, 120000);
+	}, 60000);
 
 	editFunnyStatus();
 });

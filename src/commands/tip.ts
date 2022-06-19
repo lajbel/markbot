@@ -16,6 +16,9 @@ const tips = [
 	{
 		t: "you can sell your Kaboom game thanks to the MIT License",
 	},
+	{
+		t: "if you are using node, you can import kaboom as you want, like `blankboom` or `thebestengine`, ```js\nimport bestengine from 'kaboom';\nbestengine();\n```",
+	},
 ];
 
 const cmd: MarkCommand = {

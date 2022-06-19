@@ -1,5 +1,4 @@
 import { MarkComponent } from "../types/component.ts";
-import { jams } from "../util/jams.ts";
 
 const cpm: MarkComponent = async (interaction) => {
 	if (interaction.data.values?.[0] == "noGames") return interaction.reply("no games <:horrormark:918301111826407546>");

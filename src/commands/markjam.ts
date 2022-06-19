@@ -1,4 +1,4 @@
-import { MessageComponentPayload, MessageComponentType } from "../../deps.ts";
+import { MessageComponentData, MessageComponentType } from "../../deps.ts";
 import { MarkCommand } from "../types/command.ts";
 import { jams } from "../util/jams.ts";
 
@@ -25,9 +25,9 @@ const cmd: MarkCommand = {
 		const entries = await (await (await fetch(`https://itch.io/jam/${jams[interaction.options?.[0].value]}/entries.json`))
 			.json()).jam_games;
 
-		const select: MessageComponentPayload = {
+		const select: MessageComponentData = {
 			type: MessageComponentType.SELECT,
-			custom_id: "markjamchoose",
+			customID: "markjam_choose",
 			placeholder: entries.length ? "Choose a game..." : "No games have been submitted yet.",
 			options: [],
 		};
