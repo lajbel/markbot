@@ -1,34 +1,60 @@
 import { MarkCommand } from "../types/command.ts";
-import { xml2js } from "https://deno.land/x/xml2js@1.0.0/mod.ts";
+
+const fixedValues = {
+	"NumberKeyword": "number",
+};
+
+function UnionTypes(types) {
+	return types.map((t) => {
+		return t.typeName || fixedValues[t.kind];
+	}).join(" | ");
+}
 
 const cmd: MarkCommand = {
 	name: "doc",
 	description: "get info of doc",
-	exe: async (interaction) => {
-		const kaboomPageContent = await fetch("https://kaboomjs.com").then(async (r) => {
-			return Object(xml2js(await r.text(), {}));
-		});
+	options: [{
+		name: "element",
+		description: "The doc element to search",
+		type: "STRING",
+		required: true,
+	}],
+	exe: (interaction) => {
+		const kaboomDoc = JSON.parse(Deno.readTextFileSync("src/doc.json")).types;
+		const ctxDoc = kaboomDoc.KaboomCtx[0].members;
 
-		const kaboomBody =
-			kaboomPageContent.elements[1].elements[1].elements[0].elements[2].elements[3].elements[2].elements[4].elements[5].elements[3].elements[0]
-				.elements[0]
-				.elements[2]
-				.elements[3].elements[0].elements[0].elements;
+		const docToShow = {
+			title: "",
+			description: "",
+			exampleCode: "",
+		};
 
-		const code: any = [];
+		if (interaction.options?.[0]?.value) {
+			let doc;
 
-		kaboomBody.forEach((e) => {
-			let elm = e.elements?.[0]?.text || e.text;
+			if (interaction.options?.[0].value === "kaboom") doc = kaboomDoc["kaboom"][0];
+			else {
+				doc = ctxDoc[interaction.options?.[0]?.value?.toLowerCase()]?.[0];
+			}
 
-			if (e.attributes?.class === "hljs-comment") elm = elm + "\n";
+			if (!doc) {
+				return interaction.reply("**ERROR:** Function not founded on Kaboom Documentation");
+			}
 
-			code.push(elm);
-		});
+			docToShow.title = doc.name + `(${
+				doc.parameters?.map((e) => {
+					return `${e.name}: ${e?.type?.typeName || fixedValues[e?.type?.kind] || UnionTypes(e?.type?.types)}`;
+				}).join(", ")
+			}): ${doc.type.typeName || " "}`;
+			docToShow.description = doc.jsDoc?.doc || " ";
+			docToShow.exampleCode = doc.jsDoc?.tags?.example || "Without example.";
+		}
 
 		interaction.respond({
 			embeds: [{
 				color: 0xffe359,
-				description: `\`\`\`js\n ${code.join("")} \n\`\`\``,
+				title: docToShow.title,
+				description: `${docToShow.description}\n${docToShow.exampleCode}`,
 			}],
 		});
 	},
