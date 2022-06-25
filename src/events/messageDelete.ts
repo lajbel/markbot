@@ -10,7 +10,7 @@ export default client.on("messageDelete", (message) => {
 			title: `Message deleted`,
 			description: `"${message.content}" in <#${message.channel.id}>`,
 			author: { name: message.author.tag, icon_url: message.author.avatarURL("gif") },
-			image: { url: message.attachments?.[0].url },
+			image: { url: message.attachments?.[0]?.url },
 		}],
 	});
 });

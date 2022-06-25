@@ -1,13 +1,9 @@
 import { client } from "../mod.ts";
+import { hasInvite } from "../util/antiInvites.ts";
 
 export default client.on("messageUpdate", async (before, after) => {
-	const regAI = /(https:\/\/)?((discord|discordapp).((gg\/\w+)|(com\/(invite\/\w+))))/g;
-
 	// anti-invites
-	if (
-		before.content.match(regAI) &&
-		!await before.member?.roles.get("883786808062787594")
-	) {
+	if (hasInvite(before.content) && !await before.member?.roles.get("883786808062787594")) {
 		before.channel.send("Don't send invites - <@947683287369912330>");
 
 		before.delete();
