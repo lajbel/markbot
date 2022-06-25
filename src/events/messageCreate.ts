@@ -8,7 +8,7 @@ export default client.on("messageCreate", async (message) => {
 		message.content.match(regAI) &&
 		!await message.member?.roles.get("883786808062787594")
 	) {
-		message.channel.send("Don't send invites - <@947683287369912330>");
+		message.channel.send("hey! don't send invites...");
 
 		message.delete();
 	}

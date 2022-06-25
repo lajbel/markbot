@@ -42,16 +42,6 @@ const cmd: MarkCommand = {
 							},
 						],
 					},
-					// {
-					// 	type: "BUTTON",
-					// 	customID: "announcements_button",
-					// 	label: "Announcements",
-					// 	style: "SECONDARY",
-					// 	emoji: {
-					// 		id: "914611006838284310",
-					// 		name: "kbm_pineapple",
-					// 	},
-					// },
 				],
 			}],
 			ephemeral: true,
