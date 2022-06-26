@@ -1,13 +1,54 @@
 import { MarkCommand } from "../types/command.ts";
 
-const fixedValues = {
-	"NumberKeyword": "number",
-};
-
 function UnionTypes(types) {
 	return types.map((t) => {
-		return t.typeName || fixedValues[t.kind];
+		return fixValue(t);
 	}).join(" | ");
+}
+
+function funcType(type) {
+	return `() => ${fixValue(type.type)}`;
+}
+
+function arrType(type) {
+	return `${fixValue(type.elementType)}[]`;
+}
+
+function litType(type) {
+	return fixValue(type.literal);
+}
+
+function camelize(str) {
+	return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
+		return index === 0 ? word.toLowerCase() : word.toUpperCase();
+	}).replace(/\s+/g, "");
+}
+
+function fixValue(t): string | void {
+	if (t.typeName) return "`" + t.typeName + "`";
+	switch (t.kind) {
+		case "FunctionType":
+			return funcType(t);
+		case "ArrayKeyword":
+			return "`[]`";
+		case "ArrayType":
+			return arrType(t);
+		case "LiteralType":
+			return litType(t);
+
+		// keywords lol
+
+		case "NumberKeyword":
+			return "`number`";
+		case "StringKeyword":
+			return "`string`";
+		case "BooleanKeyword":
+			return "`boolean`";
+		case "NullKeyword":
+			return "`null`";
+		case "VoidKeyword":
+			return "`void`";
+	}
 }
 
 const cmd: MarkCommand = {
@@ -34,7 +75,7 @@ const cmd: MarkCommand = {
 
 			if (interaction.options?.[0].value === "kaboom") doc = kaboomDoc["kaboom"][0];
 			else {
-				doc = ctxDoc[interaction.options?.[0]?.value?.toLowerCase()]?.[0];
+				doc = ctxDoc[camelize(interaction.options?.[0]?.value)]?.[0];
 			}
 
 			if (!doc) {
@@ -43,7 +84,7 @@ const cmd: MarkCommand = {
 
 			docToShow.title = doc.name + `(${
 				doc.parameters?.map((e) => {
-					return `${e.name}: ${e?.type?.typeName || fixedValues[e?.type?.kind] || UnionTypes(e?.type?.types)}`;
+					return `${e.name}: ${e?.type?.typeName || fixValue(e?.type) || UnionTypes(e?.type?.types)}`;
 				}).join(", ")
 			}): ${doc.type.typeName || " "}`;
 			docToShow.description = doc.jsDoc?.doc || " ";
@@ -55,6 +96,7 @@ const cmd: MarkCommand = {
 				color: 0xffe359,
 				title: docToShow.title,
 				description: `${docToShow.description}\n${docToShow.exampleCode}`,
+				footer: { text: "Provided by Kaboomjs.com" },
 			}],
 		});
 	},
