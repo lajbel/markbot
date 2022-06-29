@@ -11,6 +11,7 @@ export default client.on("messageUpdate", async (before, after) => {
 
 	// kaboom's guild log
 	if (before.guildID !== "883781994583056384") return;
+	if (before.content === after.content) return;
 
 	client.channels.sendMessage("900101147572989982", {
 		embeds: [{
