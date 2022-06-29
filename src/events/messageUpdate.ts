@@ -14,7 +14,7 @@ export default client.on("messageUpdate", async (before, after) => {
 
 	client.channels.sendMessage("900101147572989982", {
 		embeds: [{
-			color: 0xffe359,
+			color: 0x52f3ff,
 			title: `Message updated`,
 			description: `old: "${before.content} \n new: "${after.content}" in <#${before.channel.id}>`,
 			author: { name: before.author.tag, icon_url: before.author.avatarURL("gif") },
