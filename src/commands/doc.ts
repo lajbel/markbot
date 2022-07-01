@@ -18,12 +18,6 @@ function litType(type) {
 	return fixValue(type.literal);
 }
 
-function camelize(str) {
-	return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
-		return index === 0 ? word.toLowerCase() : word.toUpperCase();
-	}).replace(/\s+/g, "");
-}
-
 function fixValue(t): string | void {
 	if (t.typeName) return "`" + t.typeName + "`";
 	switch (t.kind) {
@@ -68,35 +62,48 @@ const cmd: MarkCommand = {
 			title: "",
 			description: "",
 			exampleCode: "",
+			otherWays: "",
 		};
 
-		if (interaction.options?.[0]?.value) {
-			let doc;
+		let doc;
 
-			if (interaction.options?.[0].value === "kaboom") doc = kaboomDoc["kaboom"][0];
-			else {
-				doc = ctxDoc[camelize(interaction.options?.[0]?.value)]?.[0];
-			}
+		if (interaction.options?.[0].value.toLowerCase() === "kaboom") doc = kaboomDoc["kaboom"];
+		else {
+			doc = ctxDoc[Object.keys(ctxDoc).find((k) => k.toLowerCase() === interaction.options?.[0].value.toLowerCase())!];
+		}
 
-			if (!doc) {
-				return interaction.reply("**ERROR:** Function not founded on Kaboom Documentation");
-			}
+		if (!doc) {
+			return interaction.reply("**ERROR:** Function not founded on Kaboom Documentation");
+		}
 
-			docToShow.title = doc.name + `(${
-				doc.parameters?.map((e) => {
+		docToShow.title = doc[0].name + `(${
+			doc[0].parameters?.map((e) => {
+				return `${e.name}: ${e?.type?.typeName || fixValue(e?.type) || UnionTypes(e?.type?.types)}`;
+			}).join(", ")
+		}): ${doc[0].type?.typeName || " "}`;
+		docToShow.description = doc[0].jsDoc?.doc || " ";
+		docToShow.exampleCode = doc[0].jsDoc?.tags?.example || "Without example.";
+
+		// more doc
+		for (let i = 1; i < doc.length; i++) {
+			const title = doc[i].name + `(${
+				doc[i].parameters?.map((e) => {
 					return `${e.name}: ${e?.type?.typeName || fixValue(e?.type) || UnionTypes(e?.type?.types)}`;
 				}).join(", ")
-			}): ${doc.type.typeName || " "}`;
-			docToShow.description = doc.jsDoc?.doc || " ";
-			docToShow.exampleCode = doc.jsDoc?.tags?.example || "Without example.";
+			}): ${doc[i].type?.typeName || " "}`;
+			const description = doc[i].jsDoc?.doc || " ";
+			const exampleCode = doc[i].jsDoc?.tags?.example || "";
+
+			docToShow.otherWays += `\n**${title}**\n${description}${exampleCode}`;
 		}
 
 		interaction.respond({
 			embeds: [{
-				color: 0xffe359,
+				color: 0xFF7070,
 				title: docToShow.title,
-				description: `${docToShow.description}\n${docToShow.exampleCode}`,
+				description: `${docToShow.description}\n${docToShow.exampleCode}\n${docToShow.otherWays}`,
 				footer: { text: "Provided by Kaboomjs.com" },
+				thumbnail: { url: "https://kaboomjs.com/site/img/kaboom.png" },
 			}],
 		});
 	},
