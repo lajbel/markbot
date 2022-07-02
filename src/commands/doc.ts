@@ -73,7 +73,7 @@ const cmd: MarkCommand = {
 		}
 
 		if (!doc) {
-			return interaction.reply("**ERROR:** Function not founded on Kaboom Documentation");
+			return interaction.respond({ content: "**ERROR:** Function not founded on Kaboom Documentation", ephemeral: true });
 		}
 
 		docToShow.title = doc[0].name + `(${
@@ -101,8 +101,10 @@ const cmd: MarkCommand = {
 			embeds: [{
 				color: 0xFF7070,
 				title: docToShow.title,
-				description: `${docToShow.description}\n${docToShow.exampleCode}\n${docToShow.otherWays}`,
-				footer: { text: "Provided by Kaboomjs.com" },
+				description: `${docToShow.description} [View in Kaboom doc](https://kaboomjs.com/#${
+					doc[0].name
+				})\n${docToShow.exampleCode}\n${docToShow.otherWays}`,
+				footer: { text: `Provided by Kaboomjs.com` },
 				thumbnail: { url: "https://kaboomjs.com/site/img/kaboom.png" },
 			}],
 		});

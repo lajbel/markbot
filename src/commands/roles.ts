@@ -22,7 +22,7 @@ const cmd: MarkCommand = {
 								description: "You will be mentioned by people who need help with code",
 								value: "901298683906240582",
 								emoji: {
-									name: "kbm_hearth",
+									name: "ka_heart",
 									id: "884813519961342002",
 								},
 							},
@@ -31,7 +31,7 @@ const cmd: MarkCommand = {
 								description: "You will be mentioned for announcements",
 								value: "901533627802873876",
 								emoji: {
-									name: "kbm_pineapple",
+									name: "ka_pineapple",
 									id: "914611006838284310",
 								},
 							},
@@ -39,6 +39,10 @@ const cmd: MarkCommand = {
 								label: "Jammer",
 								description: "You will be mentioned for jamming",
 								value: "959499941183635467",
+								emoji: {
+									name: "ka_pizza",
+									id: "914610944791949352",
+								},
 							},
 						],
 					},
