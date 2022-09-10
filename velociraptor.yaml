@@ -1,7 +1,11 @@
 scripts:
-  start: deno run -A src/mod.ts
+  start: 
+    cmd: deno run -A src/mod.ts
+    desc: "Run markbot with all permissions and with check"
   dev:
     cmd: deno run -A --no-check src/mod.ts
+    desc: "Run markbot with all permissions, without check and watching for changes"
     watch: true
   fmt:
     cmd: deno fmt --config deno.json .
+    desc: "Format"

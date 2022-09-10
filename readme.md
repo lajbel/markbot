@@ -64,4 +64,4 @@ Your new command is automatically loaded by `mod.ts`.
 
 [Harmony 🦕](https://deno.land/harmony) - Cool library for interact with Discord API <br>
 [Replit 🌀](https://replit.com) - Hosting of MarkBot thanks to [tga](https://github.com/slmjkdbtl), Kaboom creator <br>
-[Kaboom Discord 💥](discord.gg/aq6ruqm3tf) - Official Kaboom Discord, develop indie games now are fun and easy
+[Kaboom Discord 💥](discord.gg/aq6ruqm3tf) - Official Kaboom Discord, make games now are fun and easy

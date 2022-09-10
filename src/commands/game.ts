@@ -2,7 +2,7 @@ import { MarkCommand } from "../types/command.ts";
 
 const cmd: MarkCommand = {
 	name: "game",
-	description: "get a random kaboom game of Itch.io",
+	description: "get a random kaboom game of itch.io",
 	exe: async (interaction) => {
 		const games = await (await (await fetch(
 			"https://api.factmaven.com/xml-to-json/?xml=https://itch.io/games/tag-kaboomjs.xml",
