@@ -14,18 +14,17 @@ const tips = [
 		t: "you can use these fonts in your kaboom game without import anything: `apl386`, `apl386o`, `sink`, `sinko`",
 	},
 	{
-		t: "you can sell your Kaboom game thanks to the MIT License",
+		t: "you can do anything with your Kaboom game thanks to the MIT License",
 	},
 	{
 		t: "if you are using node, you can import kaboom as you want, like `blankboom` or `thebestengine`, ```js\nimport bestengine from 'kaboom';\nbestengine();\n```",
 	},
 	{
-		t: "KaboomJS has a LOT of great functions and methods!, you can see all of them at kaboomjs.com",
+		t: "Kaboom has a LOT of great functions and methods!, you can see all of them at kaboomjs.com",
 	},
 	{
 		t: "You can use the `/doc` command to search about kaboom functions on the go!",
 	},
-
 ];
 
 const cmd: MarkCommand = {

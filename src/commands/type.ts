@@ -1,4 +1,4 @@
-import { Embed, Member } from "../../deps.ts";
+import { Embed } from "../../deps.ts";
 import { MarkCommand } from "../types/command.ts";
 import { fixValue, UnionTypes } from "../util/typeFix.ts";
 
@@ -28,8 +28,6 @@ const cmd: MarkCommand = {
 		};
 
 		const doc = kaboomDoc[interaction.options?.[0]?.value]?.[0];
-
-		// console.log(doc);
 
 		if (!doc) {
 			return interaction.respond({ content: "**ERROR:** Type not founded on Kaboom Documentation", ephemeral: true });

@@ -10,13 +10,4 @@ export default client.on("messageCreate", async (message) => {
 
 		message.delete();
 	}
-
-	// kaboom's guild work
-
-	if (message.channelID !== "991824061460123848") return;
-
-	message.startThread({
-		name: `Collab with ${message.author.username}`,
-		autoArchiveDuration: 1440,
-	});
 });
