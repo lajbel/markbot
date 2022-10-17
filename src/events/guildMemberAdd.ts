@@ -12,7 +12,9 @@ export default client.on("guildMemberAdd", async (member) => {
                 title: "OHHI",
                 description:
                     `ohhi **${member.user.username}**, welcome to the Kaboom Server, a place for talk arround kaboom and indie games, check some tips for you!\n\n **-** If you need help with code, <#883782079802908772> is the best place, you can ping <@&901298683906240582>\n **-** You can get roles with \`/roles\` command\n **-** You can access to more languages with \`/language\``,
-                image: { url: "https://imgur.com/t9pTiPr.png" },
+                image: {
+                    url: "https://images-ext-1.discordapp.net/external/F5N8GYNpJXsebklj3CU8lfvuM20xEyXY48gLZsejHgo/https/im3.ezgif.com/tmp/ezgif-3-039e6e8468.gif",
+                },
             }],
         });
 
