@@ -40,19 +40,19 @@ In `src/commands` make a new `.ts` file, and use this command template:
 import { MarkCommand } from "../types/command.ts";
 
 const cmd: MarkCommand = {
-	name: "hi",
-	description: "say hi",
-	options: [
-		{
-			name: "user",
-			description: "User for say hi",
-			type: "USER",
-			required: false,
-		},
-	],
-	exe: (interaction) => {
-		// epic things
-	},
+    name: "hi",
+    description: "say hi",
+    options: [
+        {
+            name: "user",
+            description: "User for say hi",
+            type: "USER",
+            required: false,
+        },
+    ],
+    exe: (interaction) => {
+        // epic things
+    },
 };
 
 export default cmd;

@@ -1,27 +1,27 @@
 {
-	"compilerOptions": {
-		"noImplicitAny": false
-	},
-	"lint": {
-		"rules": {
-			"exclude": [
-				"no-explicit-any"
-			]
-		}
-	},
-	"fmt": {
-		"files": {
-			"exclude": [
-				"velociraptor.yaml",
-				"src/deps.ts"
-			]
-		},
-		"options": {
-			"useTabs": true,
-			"lineWidth": 160,
-			"indentWidth": 4,
-			"singleQuote": false,
-			"proseWrap": "preserve"
-		}
-	}
+    "compilerOptions": {
+        "noImplicitAny": false
+    },
+    "lint": {
+        "rules": {
+            "exclude": [
+                "no-explicit-any"
+            ]
+        }
+    },
+    "fmt": {
+        "files": {
+            "exclude": [
+                "velociraptor.yaml",
+                "src/deps.ts"
+            ]
+        },
+        "options": {
+            "useTabs": false,
+            "lineWidth": 160,
+            "indentWidth": 4,
+            "singleQuote": false,
+            "proseWrap": "preserve"
+        }
+    }
 }
