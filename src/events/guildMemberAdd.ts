@@ -13,7 +13,7 @@ export default client.on("guildMemberAdd", async (member) => {
                 description:
                     `ohhi **${member.user.username}**, welcome to the Kaboom Server, a place for talk arround kaboom and indie games, check some tips for you!\n\n **-** If you need help with code, <#883782079802908772> is the best place, you can ping <@&901298683906240582>\n **-** You can get roles with \`/roles\` command\n **-** You can access to more languages with \`/language\``,
                 image: {
-                    url: "../kawelcome.gif",
+                    url: "https://i.imgur.com/n8KN0wu.gif",
                 },
             }],
         });
