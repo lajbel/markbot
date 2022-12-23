@@ -12,7 +12,7 @@ _____ _____ _____ _____ _____ _____ _____
 												
 
 MarkBot © Licensed by Bean Tecnologies & Co.
-	`);
+    `);
 
     const funnyStatus = [
         "KABOOM",

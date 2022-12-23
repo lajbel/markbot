@@ -1,10 +1,7 @@
-## Replit
-
 .cache/
 .config/
 .nix/
 .deno/
-
-### More
-
 .env
+.vscode/
+deno.lock

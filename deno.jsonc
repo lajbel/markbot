@@ -23,5 +23,10 @@
             "singleQuote": false,
             "proseWrap": "preserve"
         }
+    },
+    "tasks": {
+        "run": "deno run -A src/mod.ts",
+        "nocheck": "deno run -A --no-check src/mod.ts",
+        "fmt": "deno fmt ."
     }
 }
