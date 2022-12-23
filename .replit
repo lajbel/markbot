@@ -1,5 +1,6 @@
-# Configuration for Replit
-
 language = "Deno"
 run="deno task run"
 entrypoint="src/mod.ts"
+
+[nix]
+channel = "unstable"
