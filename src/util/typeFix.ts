@@ -29,7 +29,6 @@ export function fixValue(t): string | void {
             return litType(t);
 
         // keywords lol
-
         case "NumberKeyword":
             return "`number`";
         case "StringKeyword":

@@ -1,5 +1,5 @@
 // construct a embed with mark bot
-import { MarkCommand } from "../types/command.ts";
+import { MarkCommand } from "../types.ts";
 
 const cmd: MarkCommand = {
     name: "embed",

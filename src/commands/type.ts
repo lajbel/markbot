@@ -1,5 +1,5 @@
 import { Embed } from "../../deps.ts";
-import { MarkCommand } from "../types/command.ts";
+import { MarkCommand } from "../types.ts";
 import { fixValue, UnionTypes } from "../util/typeFix.ts";
 
 const cmd: MarkCommand = {

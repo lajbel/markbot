@@ -1,5 +1,5 @@
 import { Client, config, GatewayIntents, ReplDB } from "../deps.ts";
-import { MarkCommand } from "./types/command.ts";
+import { MarkCommand } from "./types.ts";
 import { cmdlog, eventlog } from "./util/logger.ts";
 
 export const client = new Client();

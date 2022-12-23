@@ -1,4 +1,4 @@
-import { MarkCommand } from "../types/command.ts";
+import { MarkCommand } from "../types.ts";
 
 function UnionTypes(types) {
     return types.map((t) => {

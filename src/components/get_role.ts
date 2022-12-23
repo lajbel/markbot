@@ -1,4 +1,4 @@
-import { MarkComponent } from "../types/component.ts";
+import { MarkComponent } from "../types.ts";
 
 const cpm: MarkComponent = async (interaction) => {
     const role = await interaction.guild?.roles.get(interaction.data.values?.[0]!);
