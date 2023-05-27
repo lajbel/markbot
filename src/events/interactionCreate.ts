@@ -1,4 +1,4 @@
-import { client, commands, components } from "../mod.ts";
+import { client, commands, components } from "../client.ts";
 
 export default client.on("interactionCreate", (interaction) => {
     if (!interaction.guild) return;

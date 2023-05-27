@@ -1,10 +1,11 @@
-import { Embed } from "../../deps.ts";
+import { Embed } from "harmony";
 import { MarkCommand } from "../types.ts";
 import { fixValue, UnionTypes } from "../util/typeFix.ts";
+import Kaboom2000Doc from "../doc.json" assert { type: "json" };
 
 const cmd: MarkCommand = {
     name: "type",
-    description: "get info of a type",
+    description: "Get info of a Kaboom's type",
     options: [{
         name: "element",
         description: "The doc element to search",
@@ -12,9 +13,8 @@ const cmd: MarkCommand = {
         required: true,
     }],
     exe: (interaction) => {
-        if (interaction.user.id !== "947683287369912330") return interaction.reply("lajbel wip");
+        const types = Kaboom2000Doc.types;
 
-        const kaboomDoc = JSON.parse(Deno.readTextFileSync("src/doc.json")).types;
         const embed = new Embed()
             .setColor(0xFF7070)
             .setThumbnail("https://kaboomjs.com/site/img/kaboom.png")
@@ -27,26 +27,28 @@ const cmd: MarkCommand = {
             methods: "",
         };
 
-        const doc = kaboomDoc[interaction.options?.[0]?.value]?.[0];
-
-        if (!doc) {
-            return interaction.respond({ content: "**ERROR:** Type not founded on Kaboom Documentation", ephemeral: true });
+        const type = types[interaction.options?.[0]?.value]?.[0];
+        if (!type) {
+            return interaction.respond({
+                content: "**ERROR:** Type not found on Kaboom's Documentation",
+                ephemeral: true,
+            });
         }
 
-        embed.setTitle(doc.name);
-        embed.setDescription(doc.jsDoc?.doc || " ");
+        embed.setTitle(type.name);
+        embed.setDescription(type.jsDoc?.doc || "There' s no description for this type");
 
-        if (doc.name === "KaboomCtx") {
+        if (type.name === "KaboomCtx") {
             embed.setDescription(docToShow.description += "\n\n Use `/doc` command to see the KaboomCtx members");
         }
 
-        if (doc.kind === "TypeAliasDeclaration") {
-            embed.setDescription(doc.type.types.map((o) => o.literal.text).join(" | "));
-        } else if (doc.kind === "ClassDeclaration") {
-            for (const memberName in doc.members) {
-                if (doc.name === "KaboomCtx") continue;
+        if (type.kind === "TypeAliasDeclaration") {
+            embed.setDescription(type.type.types.map((o) => o.literal.text).join(" | "));
+        } else if (type.kind === "ClassDeclaration") {
+            for (const memberName in type.members) {
+                if (type.name === "KaboomCtx") continue;
 
-                const member = doc.members[memberName][0];
+                const member = type.members[memberName][0];
 
                 if (member.kind === "PropertyDeclaration") {
                     docToShow.props += `\n**${member.name}:** ${"`" + member.type.typeName + "`" || fixValue(member.type)}`;
@@ -62,10 +64,10 @@ const cmd: MarkCommand = {
             }
 
             embed.setDescription(embed.description + docToShow.props + docToShow.methods);
-        } else if (doc.kind === "InterfaceDeclaration") {
-            docToShow.description = doc.jsDoc.doc + "\n";
+        } else if (type.kind === "InterfaceDeclaration") {
+            docToShow.description = type.jsDoc.doc + "\n";
 
-            const members = Object.values(doc.members).map((member: any) => {
+            const members = Object.values(type.members).map((member: any) => {
                 return member.map((v) => {
                     console.log(v);
 
@@ -77,7 +79,7 @@ const cmd: MarkCommand = {
 
             embed.setDescription(docToShow.description + members.join());
         } else {
-            embed.setDescription("type not supported yet");
+            embed.setDescription("Type not supported yet");
         }
 
         interaction.respond({

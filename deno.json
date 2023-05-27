@@ -1,4 +1,5 @@
 {
+    "importMap": "./import_map.json",
     "compilerOptions": {
         "noImplicitAny": false
     },
@@ -10,12 +11,6 @@
         }
     },
     "fmt": {
-        "files": {
-            "exclude": [
-                "velociraptor.yaml",
-                "src/deps.ts"
-            ]
-        },
         "options": {
             "useTabs": false,
             "lineWidth": 160,
@@ -25,8 +20,8 @@
         }
     },
     "tasks": {
-        "run": "deno run -A src/mod.ts",
-        "nocheck": "deno run -A --no-check src/mod.ts",
+        "run": "deno run -A src/client.ts",
+        "dev": "deno run -A --no-check src/client.ts",
         "fmt": "deno fmt ."
     }
 }

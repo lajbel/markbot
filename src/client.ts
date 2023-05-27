@@ -1,4 +1,6 @@
-import { Client, config, GatewayIntents, ReplDB } from "../deps.ts";
+import { Client, GatewayIntents } from "harmony";
+import "dotenv/load";
+
 import { MarkCommand } from "./types.ts";
 import { cmdlog, eventlog } from "./util/logger.ts";
 
@@ -6,12 +8,9 @@ export const client = new Client();
 export const commands: Map<string, MarkCommand> = new Map();
 export const components = new Map();
 
-export const db = new ReplDB(Deno.env.get("REPLIT_DB_URL") || config().REPLIT_DB_URL);
-
-client.connect(Deno.env.get("DISCORD_TOKEN") || config().DISCORD_TOKEN, [
+client.connect(Deno.env.get("DISCORD_TOKEN_KEY"), [
     GatewayIntents.GUILDS,
     GatewayIntents.GUILD_MESSAGES,
-    GatewayIntents.GUILD_MEMBERS,
 ]);
 
 for await (const file of Deno.readDir("src/events")) {

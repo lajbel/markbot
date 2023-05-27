@@ -1,9 +1,7 @@
-import { ApplicationCommandInteraction, ApplicationCommandPartial, MessageComponentInteraction } from "../deps.ts";
+import { ApplicationCommandInteraction, ApplicationCommandPartial, MessageComponentInteraction } from "harmony";
 
 export interface MarkCommand extends ApplicationCommandPartial {
-    exe: (
-        interaction: ApplicationCommandInteraction,
-    ) => void;
+    exe: (interaction: ApplicationCommandInteraction) => void;
 }
 
 export interface MarkComponent {

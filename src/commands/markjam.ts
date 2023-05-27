@@ -1,4 +1,4 @@
-import { Embed } from "../../deps.ts";
+import { Embed } from "harmony";
 import { MarkCommand } from "../types.ts";
 
 const cmd: MarkCommand = {

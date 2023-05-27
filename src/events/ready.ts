@@ -1,4 +1,4 @@
-import { client } from "../mod.ts";
+import { client } from "../client.ts";
 import { important } from "../util/logger.ts";
 
 export default client.on("ready", () => {
@@ -15,31 +15,18 @@ MarkBot © Licensed by Bean Tecnologies & Co.
     `);
 
     const funnyStatus = [
-        "KABOOM",
-        "BEAN",
+        "Kaboom.js",
         "Kaboom Server",
         "Kaboom Playground",
         "Family Friendly Words",
         "Powerful",
-        "KaJam 2069",
         "kaboomjs.com",
-        "FIREWORKS in kaboom.com",
+        "Fireworks in kaboom.com",
         "twitter.com/kaboomjs",
-        "discord.gg/kaboom in a future",
-        "Mark",
-        "Increible Games",
-        "Mark Jam 2: INTO SPACE",
+        "Mark (?)",
         "New Kaboom games on Itch.io",
-        "New Kaboom games on Newgrounds.com",
-        "Replit Kaboom Template",
-        "How many Marks are needed for change a 💡",
-        "Kajam 2022",
-        "A butterlfy",
-        "DaInfLoop is a bot",
-        "tga are afk",
-        "Insanyn English class",
+        "Kajam 2023",
         "New Kaboom games on replit.com/community/kaboom",
-        "Mark Jam Winners",
     ];
 
     function editFunnyStatus() {

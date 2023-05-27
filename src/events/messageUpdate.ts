@@ -1,4 +1,4 @@
-import { client } from "../mod.ts";
+import { client } from "../client.ts";
 import { hasInvite } from "../util/antiInvites.ts";
 
 export default client.on("messageUpdate", async (before, after) => {

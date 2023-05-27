@@ -1,4 +1,4 @@
-import { client } from "../mod.ts";
+import { client } from "../client.ts";
 
 export default client.on("messageDelete", (message) => {
     // kaboom's guild log

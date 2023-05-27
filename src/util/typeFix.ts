@@ -16,28 +16,30 @@ export function litType(type) {
     return fixValue(type.literal);
 }
 
-export function fixValue(t): string | void {
-    if (t.typeName) return "`" + t.typeName + "`";
-    switch (t.kind) {
-        case "FunctionType":
-            return funcType(t);
-        case "ArrayKeyword":
-            return "`[]`";
-        case "ArrayType":
-            return arrType(t);
-        case "LiteralType":
-            return litType(t);
+export function fixValue(type): string | void {
+    if (type.typeName) return "`" + type.typeName + "`";
 
-        // keywords lol
+    switch (type.kind) {
         case "NumberKeyword":
             return "`number`";
         case "StringKeyword":
             return "`string`";
         case "BooleanKeyword":
             return "`boolean`";
+        case "AnyKeyword":
+            return "`any`";
         case "NullKeyword":
             return "`null`";
         case "VoidKeyword":
             return "`void`";
+
+        case "FunctionType":
+            return funcType(type);
+        case "ArrayKeyword":
+            return "`[]`";
+        case "ArrayType":
+            return arrType(type);
+        case "LiteralType":
+            return litType(type);
     }
 }

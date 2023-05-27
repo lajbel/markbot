@@ -1,49 +1,5 @@
 import { MarkCommand } from "../types.ts";
-
-function UnionTypes(types) {
-    return types.map((t) => {
-        return fixValue(t);
-    }).join(" | ");
-}
-
-function funcType(type) {
-    return `() => ${fixValue(type.type)}`;
-}
-
-function arrType(type) {
-    return `${fixValue(type.elementType)}[]`;
-}
-
-function litType(type) {
-    return fixValue(type.literal);
-}
-
-function fixValue(t): string | void {
-    if (t.typeName) return "`" + t.typeName + "`";
-    switch (t.kind) {
-        case "FunctionType":
-            return funcType(t);
-        case "ArrayKeyword":
-            return "`[]`";
-        case "ArrayType":
-            return arrType(t);
-        case "LiteralType":
-            return litType(t);
-
-        // keywords lol
-
-        case "NumberKeyword":
-            return "`number`";
-        case "StringKeyword":
-            return "`string`";
-        case "BooleanKeyword":
-            return "`boolean`";
-        case "NullKeyword":
-            return "`null`";
-        case "VoidKeyword":
-            return "`void`";
-    }
-}
+import { fixValue, UnionTypes } from "../util/typeFix.ts";
 
 const cmd: MarkCommand = {
     name: "doc",
