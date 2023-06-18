@@ -1,6 +1,6 @@
-import { MarkCommand } from "../types.ts";
+import { Command } from "../types.ts";
 
-const cmd: MarkCommand = {
+const cmd: Command = {
     name: "hi",
     description: "say hi",
     options: [

@@ -1,9 +1,9 @@
 import { ApplicationCommandInteraction, ApplicationCommandPartial, MessageComponentInteraction } from "harmony";
 
-export interface MarkCommand extends ApplicationCommandPartial {
+export interface Command extends ApplicationCommandPartial {
     exe: (interaction: ApplicationCommandInteraction) => void;
 }
 
-export interface MarkComponent {
+export interface Component {
     (interaction: MessageComponentInteraction): void;
 }

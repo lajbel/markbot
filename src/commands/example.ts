@@ -1,6 +1,6 @@
 // The examples commmand, where's all user examples. Add, remove, show your examples!
 import pako from "https://cdn.skypack.dev/pako";
-import { MarkCommand } from "../types.ts";
+import { Command } from "../types.ts";
 
 function decompressStr(str: string) {
     return pako.inflate(
@@ -9,7 +9,7 @@ function decompressStr(str: string) {
     );
 }
 
-const command: MarkCommand = {
+const command: Command = {
     name: "example",
     description: "show a embed with a example",
     options: [

@@ -1,4 +1,4 @@
-import { MarkCommand } from "../types.ts";
+import { Command } from "../types.ts";
 
 const tips = [
     {
@@ -27,7 +27,7 @@ const tips = [
     },
 ];
 
-const cmd: MarkCommand = {
+const cmd: Command = {
     name: "tip",
     description: "get a tip about the Kaboom World",
     options: [

@@ -1,3 +1,5 @@
+// TODO: Types
+
 export function UnionTypes(types) {
     return types.map((t) => {
         return fixValue(t);

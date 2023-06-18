@@ -1,9 +1,9 @@
 import { Embed } from "harmony";
-import { MarkCommand } from "../types.ts";
+import { Command } from "../types.ts";
 import { fixValue, UnionTypes } from "../util/typeFix.ts";
 import Kaboom2000Doc from "../doc.json" assert { type: "json" };
 
-const cmd: MarkCommand = {
+const cmd: Command = {
     name: "type",
     description: "Get info of a Kaboom's type",
     options: [{

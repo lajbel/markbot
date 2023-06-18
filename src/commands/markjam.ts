@@ -1,7 +1,7 @@
 import { Embed } from "harmony";
-import { MarkCommand } from "../types.ts";
+import { Command } from "../types.ts";
 
-const cmd: MarkCommand = {
+const cmd: Command = {
     name: "markjam",
     description: "get info about mark jam",
     exe: (interaction) => {
