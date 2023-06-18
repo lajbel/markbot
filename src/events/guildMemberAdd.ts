@@ -24,7 +24,7 @@ export default client.on("guildMemberAdd", async (member) => {
     const wlc = () =>
         welcomeChannel.send({
             content: `<:oh:952678706927775784><:hi:952678717526798398> <@${member.user.id}>`,
-            embed,
+            embeds: [embed],
         });
 
     setTimeout(wlc, 500);

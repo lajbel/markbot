@@ -1,14 +1,8 @@
-import { Command } from "../types.ts";
+import type { Command, DocPiece } from "../types.ts";
+import { Embed } from "harmony";
 import { fixValue, UnionTypes } from "../util/typeFix.ts";
-// import jsons
 import { types as kaboom2000Doc } from "../doc/2000.json" assert { type: "json" };
 import { types as kaboom3000Doc } from "../doc/3000.json" assert { type: "json" };
-
-type DocPiece = {
-    title: string;
-    description: string;
-    exampleCode: string;
-};
 
 const docs = {
     "2000": {
@@ -70,13 +64,13 @@ const cmd: Command = {
         }
 
         docMembers.forEach((e, i) => {
-            const title = docMembers[i].name + `(${
-                docMembers[i].parameters?.map((e) => {
-                    return `${e.name}: ${e?.type?.typeName || fixValue(e?.type) || UnionTypes(e?.type?.types)}`;
+            const title = e.name + `(${
+                e.parameters?.map((p) => {
+                    return `${p.name}: ${p?.type?.typeName || fixValue(p?.type) || UnionTypes(p?.type?.types)}`;
                 }).join(", ")
-            }): ${docMembers[i].type?.typeName || " "}`;
-            const description = docMembers[i].jsDoc?.doc || " ";
-            const exampleCode = docMembers[i].jsDoc?.tags?.example || "";
+            }): ${e.type?.typeName || " "}`;
+            const description = e.jsDoc?.doc || " ";
+            const exampleCode = e.jsDoc?.tags?.example || "";
 
             if (i === 0) {
                 displayData.mainDoc = { title, description, exampleCode };
@@ -85,20 +79,19 @@ const cmd: Command = {
             }
         });
 
-        interaction.respond({
-            embeds: [{
-                color: 0xFF7070,
-                title: displayData.mainDoc.title,
-                description: `${displayData.mainDoc.description} [View in Kaboom doc](${selectedDoc.url}#${
-                    docMembers[0].name
-                })\n${displayData.mainDoc.exampleCode}${
+        const embed = new Embed()
+            .setColor(0xFF7070)
+            .setTitle(displayData.mainDoc.title)
+            .setDescription(
+                `${displayData.mainDoc.description} [View in Kaboom doc](${selectedDoc.url}#${docMembers[0].name})\n${displayData.mainDoc.exampleCode}${
                     displayData.otherWays.concat([]).map((e) => {
-                        return `\n\n**${e.title}**\n${e.description}\n${e.exampleCode}`;
+                        return `\n**${e.title}**\n${e.description}\n${e.exampleCode}`;
                     }).join("")
                 }`,
-                thumbnail: { url: "https://kaboomjs.com/site/img/kaboom.png" },
-            }],
-        });
+            )
+            .setThumbnail("https://kaboomjs.com/site/img/kaboom.png");
+
+        interaction.respond({ embeds: [embed] });
     },
 };
 

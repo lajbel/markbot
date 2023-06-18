@@ -7,3 +7,9 @@ export interface Command extends ApplicationCommandPartial {
 export interface Component {
     (interaction: MessageComponentInteraction): void;
 }
+
+export type DocPiece = {
+    title: string;
+    description: string;
+    exampleCode: string;
+};
