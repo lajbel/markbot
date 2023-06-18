@@ -1,17 +1,20 @@
 import { Client, GatewayIntents } from "harmony";
 import "dotenv/load";
-
-import { MarkCommand } from "./types.ts";
+import { Command } from "./types.ts";
 import { cmdlog, eventlog } from "./util/logger.ts";
 
-export const client = new Client();
-export const commands: Map<string, MarkCommand> = new Map();
-export const components = new Map();
+export const commands: Map<string, Command> = new Map();
+export const components: Map<string, any> = new Map();
 
-client.connect(Deno.env.get("DISCORD_TOKEN_KEY"), [
-    GatewayIntents.GUILDS,
-    GatewayIntents.GUILD_MESSAGES,
-]);
+export const KABOOM_GUILD = "883781994583056384";
+
+export const client = new Client({
+    token: Deno.env.get("DISCORD_TOKEN_KEY"),
+    intents: [
+        GatewayIntents.GUILDS,
+        GatewayIntents.GUILD_MESSAGES,
+    ],
+});
 
 for await (const file of Deno.readDir("src/events")) {
     import(`./events/${file.name}`).then((mod) => {
@@ -32,7 +35,7 @@ for await (const file of Deno.readDir("src/commands")) {
                 description: command.description,
                 options: command.options,
             },
-            "883781994583056384",
+            KABOOM_GUILD,
         );
 
         commands.set(command.name, command);
@@ -48,3 +51,5 @@ for await (const file of Deno.readDir("src/components")) {
         components.set(file.name.slice(0, -3), component);
     });
 }
+
+client.connect();
