@@ -1,6 +1,7 @@
 language = "Deno"
 run="deno task run"
 entrypoint="src/mod.ts"
+onBoot="rm deno.lock"
 
 [nix]
 channel = "unstable"

@@ -1,16 +1,16 @@
 import type { Command, DocPiece } from "../types.ts";
 import { Embed } from "harmony";
 import { fixValue, UnionTypes } from "../util/typeFix.ts";
-import { types as kaboom2000Doc } from "../doc/2000.json" assert { type: "json" };
-import { types as kaboom3000Doc } from "../doc/3000.json" assert { type: "json" };
+import kaboom2000Doc from "../doc/2000.json" assert { type: "json" };
+import kaboom3000Doc from "../doc/3000.json" assert { type: "json" };
 
 const docs = {
     "2000": {
-        doc: kaboom2000Doc,
+        doc: kaboom2000Doc.types,
         url: "https://2000.kaboomjs.com/",
     },
     "3000": {
-        doc: kaboom3000Doc,
+        doc: kaboom3000Doc.types,
         url: "https://kaboomjs.com/",
     },
 };
@@ -54,8 +54,9 @@ const cmd: Command = {
         }>;
 
         if (interaction.options?.[0].value.toLowerCase() === "kaboom") {
-            docMembers = selectedDoc["kaboom"];
+            docMembers = selectedDoc.doc["kaboom"];
         } else {
+            // @ts-ignore Fix this
             docMembers = kaboomCtxMembers[searchingDoc];
         }
 
@@ -65,7 +66,7 @@ const cmd: Command = {
 
         docMembers.forEach((e, i) => {
             const title = e.name + `(${
-                e.parameters?.map((p) => {
+                e.parameters?.map((p: any) => {
                     return `${p.name}: ${p?.type?.typeName || fixValue(p?.type) || UnionTypes(p?.type?.types)}`;
                 }).join(", ")
             }): ${e.type?.typeName || " "}`;

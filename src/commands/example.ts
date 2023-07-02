@@ -1,13 +1,6 @@
 // The examples commmand, where's all user examples. Add, remove, show your examples!
-import pako from "https://cdn.skypack.dev/pako";
-import { Command } from "../types.ts";
-
-function decompressStr(str: string) {
-    return pako.inflate(
-        new Uint8Array(atob(str).split("").map((c) => c.charCodeAt(0))),
-        { to: "string" },
-    );
-}
+import type { Command } from "../types.ts";
+import { decompressCode } from "../util/decompressCode.ts";
 
 const command: Command = {
     name: "example",
@@ -22,15 +15,15 @@ const command: Command = {
     ],
     exe(interaction) {
         const url = interaction.options[0].value as string;
-        const code = new URLSearchParams(url).get("code");
-        const richCode = decompressStr(code || "") as string;
-        const limitedRichCode = richCode.slice(0, 160) + "...";
+        const urlCode = new URLSearchParams(url).get("code");
+        const code = decompressCode(urlCode || "") as string;
+        const limitedCode = code.slice(0, 400) + "...";
 
         interaction.respond({
             embeds: [{
                 color: 0xffe359,
                 title: "Kaboom Example 💥",
-                description: `\`\`\`js\n${limitedRichCode}\`\`\` \n [Open in Kaboom Playground](${url})`,
+                description: `\`\`\`js\n${limitedCode}\`\`\` \n [Open in Kaboom Playground](${url})`,
             }],
         });
     },

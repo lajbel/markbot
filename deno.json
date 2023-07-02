@@ -1,8 +1,4 @@
 {
-    "importMap": "./import_map.json",
-    "compilerOptions": {
-        "noImplicitAny": false
-    },
     "lint": {
         "rules": {
             "exclude": [
@@ -23,5 +19,10 @@
         "run": "deno run -A src/client.ts",
         "dev": "deno run -A --no-check src/client.ts",
         "fmt": "deno fmt ."
+    },
+    "imports": {
+        "harmony": "https://deno.land/x/harmony@v2.8.0/mod.ts",
+        "dotenv/load": "https://deno.land/x/dotenv@v3.2.2/load.ts",
+        "pako": "https://cdn.skypack.dev/pako"
     }
 }

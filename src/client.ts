@@ -1,6 +1,6 @@
-import { Client, GatewayIntents } from "harmony";
 import "dotenv/load";
-import { Command } from "./types.ts";
+import type { Command } from "./types.ts";
+import { Client, GatewayIntents } from "harmony";
 import { cmdlog, eventlog } from "./util/logger.ts";
 
 export const commands: Map<string, Command> = new Map();

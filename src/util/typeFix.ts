@@ -1,5 +1,13 @@
-// TODO: Types
+// @ts-nocheck Type this
 
+import { types as kaboom2000Doc } from "../doc/2000.json" assert { type: "json" };
+import { types as kaboom3000Doc } from "../doc/3000.json" assert { type: "json" };
+
+type Doc = typeof kaboom2000Doc | typeof kaboom3000Doc;
+type DocMember = Omit<Doc, "kaboom">;
+type KaboomCtxMembers = Doc["KaboomCtx"][0]["members"]["add"];
+
+// Type parsers
 export function UnionTypes(types) {
     return types.map((t) => {
         return fixValue(t);
@@ -44,4 +52,8 @@ export function fixValue(type): string | void {
         case "LiteralType":
             return litType(type);
     }
+}
+
+export function formatMember(type: KaboomCtxMembers) {
+    if (type.typeName) return type.typeName;
 }
