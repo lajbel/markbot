@@ -1,8 +1,8 @@
 import type { Command, DocPiece } from "../types.ts";
 import { Embed } from "harmony";
 import { fixValue, UnionTypes } from "../util/typeFix.ts";
-import kaboom2000Doc from "../doc/2000.json" assert { type: "json" };
-import kaboom3000Doc from "../doc/3000.json" assert { type: "json" };
+import kaboom2000Doc from "../doc/2000.json" with { type: "json" };
+import kaboom3000Doc from "../doc/3000.json" with { type: "json" };
 
 const docs = {
     "2000": {

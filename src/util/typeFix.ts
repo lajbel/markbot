@@ -1,7 +1,7 @@
 // @ts-nocheck Type this
 
-import { types as kaboom2000Doc } from "../doc/2000.json" assert { type: "json" };
-import { types as kaboom3000Doc } from "../doc/3000.json" assert { type: "json" };
+import { types as kaboom2000Doc } from "../doc/2000.json" with { type: "json" };
+import { types as kaboom3000Doc } from "../doc/3000.json" with { type: "json" };
 
 type Doc = typeof kaboom2000Doc | typeof kaboom3000Doc;
 type DocMember = Omit<Doc, "kaboom">;

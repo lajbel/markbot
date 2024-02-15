@@ -1,5 +1,5 @@
-// The examples commmand, where's all user examples. Add, remove, show your examples!
 import type { Command } from "../types.ts";
+import Example from "../models/Example.ts";
 import { decompressCode } from "../util/decompressCode.ts";
 
 const command: Command = {
@@ -7,25 +7,101 @@ const command: Command = {
     description: "show a embed with a example",
     options: [
         {
-            name: "url",
-            description: "the url of the example",
-            type: "STRING",
-            required: true,
+            name: "add",
+            description: "add a example",
+            type: "SUB_COMMAND",
+            options: [
+                {
+                    name: "title",
+                    description: "title of the example",
+                    type: "STRING",
+                    required: true,
+                },
+                {
+                    name: "description",
+                    description: "description of the example",
+                    type: "STRING",
+                    required: true,
+                },
+                {
+                    name: "url",
+                    description: "url of the example",
+                    type: "STRING",
+                    required: true,
+                },
+            ],
+        },
+        {
+            name: "show",
+            description: "show a example",
+            type: "SUB_COMMAND",
+            options: [
+                {
+                    name: "search",
+                    description: "id of the example",
+                    type: "STRING",
+                    required: true,
+                },
+            ],
+        },
+        {
+            name: "list",
+            description: "list all examples",
+            type: "SUB_COMMAND",
         },
     ],
-    exe(interaction) {
-        const url = interaction.options[0].value as string;
-        const urlCode = new URLSearchParams(url).get("code");
-        const code = decompressCode(urlCode || "") as string;
-        const limitedCode = code.slice(0, 400) + "...";
+    async exe(interaction) {
+        if (interaction.subCommand === "add") {
+            const title = String(interaction.options[0].value).trim().toLowerCase();
+            const description = String(interaction.options[1].value).trim();
+            const url = String(interaction.options[2].value);
 
-        interaction.respond({
-            embeds: [{
-                color: 0xffe359,
-                title: "Kaboom Example 💥",
-                description: `\`\`\`js\n${limitedCode}\`\`\` \n [Open in Kaboom Playground](${url})`,
-            }],
-        });
+            const urlCode = new URLSearchParams(url).get("code");
+            const code = decompressCode(urlCode || "") as string;
+            const limitedCode = code.slice(0, 400) + "...";
+
+            await Example.create({
+                title,
+                description,
+                url: `\`\`\`js\n${limitedCode}\`\`\` \n [Open in Kaboom Playground](${url})`,
+                user: interaction.user.id,
+            });
+
+            interaction.reply(`Example ${title} added!`);
+        } else if (interaction.subCommand === "list") {
+            const examples = (await Example.all()).filter((example) => example.user == interaction.user.id).map((example) => {
+                return `\`${example.id}\` - ${example.title}`;
+            }).join("\n");
+
+            interaction.respond({
+                embeds: [{
+                    color: 0xfb6d6d,
+                    title: "Examples List",
+                    description: examples,
+                }],
+            });
+        } else if (interaction.subCommand === "show") {
+            const id = Number(interaction.options[0].value) || String(interaction.options[0].value).trim().toLowerCase();
+            let example;
+
+            if (typeof id === "number") {
+                example = await Example.find(id);
+            } else {
+                example = await Example.where("title", id).first();
+            }
+            if (!example) {
+                interaction.reply("Example not found");
+                return;
+            }
+
+            interaction.respond({
+                embeds: [{
+                    color: 0xfb6d6d,
+                    title: `💥 ${example.title}`,
+                    description: `${example.description} \n${example.url}`,
+                }],
+            });
+        }
     },
 };
 

@@ -2,6 +2,7 @@ import "dotenv/load";
 import type { Command } from "./types.ts";
 import { Client, GatewayIntents } from "harmony";
 import { cmdlog, eventlog } from "./util/logger.ts";
+import db from "./db.ts";
 
 export const commands: Map<string, Command> = new Map();
 export const components: Map<string, any> = new Map();
@@ -44,12 +45,5 @@ for await (const file of Deno.readDir("src/commands")) {
     });
 }
 
-for await (const file of Deno.readDir("src/components")) {
-    import(`./components/${file.name}`).then((mod) => {
-        const component = mod.default;
-
-        components.set(file.name.slice(0, -3), component);
-    });
-}
-
+db.sync({ drop: false });
 client.connect();

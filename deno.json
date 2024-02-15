@@ -17,12 +17,18 @@
     },
     "tasks": {
         "run": "deno run -A src/client.ts",
-        "dev": "deno run -A --no-check src/client.ts",
+        "dev": "deno run -A --no-check --watch src/client.ts",
         "fmt": "deno fmt ."
     },
     "imports": {
         "harmony": "https://deno.land/x/harmony@v2.8.0/mod.ts",
         "dotenv/load": "https://deno.land/x/dotenv@v3.2.2/load.ts",
-        "pako": "https://cdn.skypack.dev/pako"
+        "pako": "https://cdn.skypack.dev/pako",
+        "denodb": "https://deno.land/x/denodb@v1.4.0/mod.ts"
+    },
+    "scopes": {
+        "https://raw.githubusercontent.com/Zhomart/dex/": {
+            "https://deno.land/std/": "https://deno.land/std@0.177.0/"
+        }
     }
 }
