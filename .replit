@@ -2,6 +2,27 @@ language = "Deno"
 run="deno task run"
 entrypoint="src/mod.ts"
 onBoot="rm deno.lock"
+hidden = [".deno"]
 
 [nix]
 channel = "unstable"
+
+[languages]
+
+[languages.deno]
+pattern = "**/*.{ts,js}"
+
+[languages.deno.languageServer]
+start = ["deno", "lsp"]
+
+[languages.deno.languageServer.initializationOptions]
+enable = true
+lint = true
+
+[env]
+DENO_DIR = "/home/runner/${REPL_SLUG}/.deno"
+
+[deployment]
+run = ["sh", "-c", "deno task run"]
+deploymentTarget = "gce"
+ignorePorts = true
