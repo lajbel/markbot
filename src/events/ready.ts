@@ -25,8 +25,9 @@ MarkBot © Licensed by Bean Tecnologies & Co.
         "twitter.com/kaboomjs",
         "Mark (?)",
         "New Kaboom games on Itch.io",
-        "Kajam 2023",
         "New Kaboom games on replit.com/community/kaboom",
+        "New Kaboom games on newgrounds.com",
+        "Kajam 2023",
     ];
 
     function editFunnyStatus() {
