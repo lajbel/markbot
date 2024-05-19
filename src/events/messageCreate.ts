@@ -10,4 +10,12 @@ export default client.on("messageCreate", async (message) => {
 
         message.delete();
     }
+
+    // kuboom related
+    else if (message.content.toLowerCase().includes("kuboom")) {
+        let substrIdx = message.content.indexOf("kuboom")
+        if (message.content.toLowerCase()[substrIdx - 1] != '!') {
+            message.reply("hey! we're the **kaboom.js** game engine discord server, not the _kuboom_ discord server...")
+        }
+    }
 });
