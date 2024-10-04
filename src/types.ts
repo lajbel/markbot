@@ -1,4 +1,8 @@
-import { ApplicationCommandInteraction, ApplicationCommandPartial, MessageComponentInteraction } from "harmony";
+import {
+    ApplicationCommandInteraction,
+    ApplicationCommandPartial,
+    MessageComponentInteraction,
+} from "@harmony/harmony";
 
 export interface Command extends ApplicationCommandPartial {
     exe: (interaction: ApplicationCommandInteraction) => void;

@@ -3,7 +3,7 @@ import type { Command } from "../types.ts";
 
 const cmd: Command = {
     name: "embed",
-    description: "send a embed msg",
+    description: "Send an embed message.",
     options: [
         {
             name: "title",
@@ -51,22 +51,38 @@ const cmd: Command = {
     ],
     defaultPermission: false,
     exe: async (interaction) => {
-        const channel = (await interaction.guild?.channels.get(interaction.options?.find((c) => c.name === "channel")?.value)) || interaction.channel;
+        const channel = (await interaction.guild?.channels.get(
+            interaction.options?.find((c) => c.name === "channel")?.value,
+        )) || interaction.channel;
         if (!channel?.isText()) return;
 
         channel.send({
             embeds: [{
                 color: 0xffe359,
-                title: interaction.options?.find((c) => c.name === "title")?.value || "",
-                description: interaction.options?.find((c) => c.name === "description")?.value.replaceAll("\\n", `\n`) || "",
+                title: interaction.options?.find((c) =>
+                    c.name === "title"
+                )?.value || "",
+                description: interaction.options?.find((c) =>
+                    c.name === "description"
+                )?.value.replaceAll("\\n", `\n`) || "",
                 image: {
-                    url: interaction.options?.find((c) => c.name === "image" && c.value.startsWith("https://") || c.value.startsWith("http://"))?.value || "",
+                    url: interaction.options?.find((c) =>
+                        c.name === "image" && c.value.startsWith("https://")
+                        || c.value.startsWith("http://")
+                    )?.value || "",
                 },
                 thumbnail: {
-                    url: interaction.options?.find((c) => c.name === "thumbnail" && c.value.startsWith("https://") || c.value.startsWith("http://"))?.value ||
-                        "",
+                    url: interaction.options?.find((c) =>
+                        c.name === "thumbnail" && c.value.startsWith("https://")
+                        || c.value.startsWith("http://")
+                    )?.value
+                        || "",
                 },
-                footer: { text: interaction.options?.find((c) => c.name === "footer")?.value || "" },
+                footer: {
+                    text: interaction.options?.find((c) =>
+                        c.name === "footer"
+                    )?.value || "",
+                },
             }],
         });
 

@@ -1,13 +1,13 @@
-import "dotenv/load";
+import "jsr:@std/dotenv/load";
+import { Client, GatewayIntents } from "@harmony/harmony";
+
 import type { Command } from "./types.ts";
-import { Client, GatewayIntents } from "harmony";
 import { cmdlog, eventlog } from "./util/logger.ts";
-import db from "./db.ts";
 
 export const commands: Map<string, Command> = new Map();
 export const components: Map<string, any> = new Map();
 
-export const KABOOM_GUILD = "883781994583056384";
+export const KAPLAY_GUILD = "883781994583056384";
 
 export const client = new Client({
     token: Deno.env.get("DISCORD_TOKEN_KEY"),
@@ -15,6 +15,12 @@ export const client = new Client({
         GatewayIntents.GUILDS,
         GatewayIntents.GUILD_MESSAGES,
     ],
+});
+
+client.interactions.commands.for(KAPLAY_GUILD).all().then((cmds) => {
+    cmds.forEach((cmd) => {
+        cmd.delete();
+    });
 });
 
 for await (const file of Deno.readDir("src/events")) {
@@ -36,7 +42,7 @@ for await (const file of Deno.readDir("src/commands")) {
                 description: command.description,
                 options: command.options,
             },
-            KABOOM_GUILD,
+            KAPLAY_GUILD,
         );
 
         commands.set(command.name, command);
@@ -45,5 +51,4 @@ for await (const file of Deno.readDir("src/commands")) {
     });
 }
 
-db.sync({ drop: false });
 client.connect();

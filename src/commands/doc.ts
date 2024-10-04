@@ -1,8 +1,8 @@
-import type { Command, DocPiece } from "../types.ts";
-import { Embed } from "harmony";
-import { fixValue, UnionTypes } from "../util/typeFix.ts";
+import { Embed } from "@harmony/harmony";
 import kaboom2000Doc from "../doc/2000.json" with { type: "json" };
 import kaboom3000Doc from "../doc/3000.json" with { type: "json" };
+import type { Command, DocPiece } from "../types.ts";
+import { fixValue, UnionTypes } from "../util/typeFix.ts";
 
 const docs = {
     "2000": {
@@ -17,29 +17,31 @@ const docs = {
 
 const cmd: Command = {
     name: "doc",
-    description: "get info from kaboom documentation",
+    description: "Get info from KAPLAY documentation.",
     options: [
         {
             name: "element",
-            description: "doc element to search",
+            description: "Doc element to search",
             type: "STRING",
             required: true,
         },
         {
             name: "version",
-            description: "kaboom version",
+            description: "KAPLAY version",
             type: "STRING",
             choices: [
                 { name: "3000", value: "3000" },
-                { name: "2000", value: "2000" },
             ],
             required: false,
         },
     ],
     exe: (interaction) => {
-        const selectedDoc = docs[interaction.options?.[1]?.value != "3000" ? "2000" : "3000"];
+        const selectedDoc =
+            docs[interaction.options?.[1]?.value != "3000" ? "2000" : "3000"];
         const kaboomCtxMembers = selectedDoc.doc.KaboomCtx[0].members;
-        const searchingDoc = Object.keys(kaboomCtxMembers).find((k) => k.toLowerCase() === interaction.options?.[0].value.toLowerCase()) as string;
+        const searchingDoc = Object.keys(kaboomCtxMembers).find((k) =>
+            k.toLowerCase() === interaction.options?.[0].value.toLowerCase()
+        ) as string;
 
         const displayData = {
             mainDoc: {} as DocPiece,
@@ -55,19 +57,27 @@ const cmd: Command = {
 
         if (interaction.options?.[0].value.toLowerCase() === "kaboom") {
             docMembers = selectedDoc.doc["kaboom"];
-        } else {
+        }
+        else {
             // @ts-ignore Fix this
             docMembers = kaboomCtxMembers[searchingDoc];
         }
 
         if (!docMembers) {
-            return interaction.respond({ content: "**ERROR:** Function not founded on Kaboom Documentation", ephemeral: true });
+            return interaction.respond({
+                content:
+                    "**ERROR:** Function not founded on Kaboom Documentation",
+                ephemeral: true,
+            });
         }
 
         docMembers.forEach((e, i) => {
             const title = e.name + `(${
                 e.parameters?.map((p: any) => {
-                    return `${p.name}: ${p?.type?.typeName || fixValue(p?.type) || UnionTypes(p?.type?.types)}`;
+                    return `${p.name}: ${
+                        p?.type?.typeName || fixValue(p?.type)
+                        || UnionTypes(p?.type?.types)
+                    }`;
                 }).join(", ")
             }): ${e.type?.typeName || " "}`;
             const description = e.jsDoc?.doc || " ";
@@ -75,7 +85,8 @@ const cmd: Command = {
 
             if (i === 0) {
                 displayData.mainDoc = { title, description, exampleCode };
-            } else {
+            }
+            else {
                 displayData.otherWays.push({ title, description, exampleCode });
             }
         });
@@ -84,7 +95,9 @@ const cmd: Command = {
             .setColor(0xFF7070)
             .setTitle(displayData.mainDoc.title)
             .setDescription(
-                `${displayData.mainDoc.description} [View in Kaboom doc](${selectedDoc.url}#${docMembers[0].name})\n${displayData.mainDoc.exampleCode}${
+                `${displayData.mainDoc.description} [View in Kaboom doc](${selectedDoc.url}#${
+                    docMembers[0].name
+                })\n${displayData.mainDoc.exampleCode}${
                     displayData.otherWays.concat([]).map((e) => {
                         return `\n**${e.title}**\n${e.description}\n${e.exampleCode}`;
                     }).join("")

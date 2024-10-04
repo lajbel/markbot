@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "run": "deno run -A src/client.ts",
+    "dev": "deno run -A --no-check --watch src/client.ts",
+    "fmt": "deno fmt ."
+  },
+  "dependencies": {
+    "@kaplayjs/dprint-config": "^1.1.0",
+    "dprint": "^0.47.2",
+    "pako": "^2.1.0"
+  }
+}

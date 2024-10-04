@@ -2,7 +2,7 @@ import { Command } from "../types.ts";
 
 const cmd: Command = {
     name: "kaboom",
-    description: "make a kaboom!!! 💥",
+    description: "Make an addKaboom()!!! 💥",
     exe: (interaction) => {
         const kabooms = [
             "https://imgur.com/EFhRwqF.gif",

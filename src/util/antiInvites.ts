@@ -1,5 +1,9 @@
 export function hasInvite(content: string): boolean {
-    if (content.match(/(https:\/\/)?((discord|discordapp).((gg\/\w+)|(com\/(invite\/\w+))))/g)) {
+    if (
+        content.match(
+            /(https:\/\/)?((discord|discordapp).((gg\/\w+)|(com\/(invite\/\w+))))/g,
+        )
+    ) {
         const inviteCode = content.split("/")[content.split("/").length - 1];
 
         switch (inviteCode) {

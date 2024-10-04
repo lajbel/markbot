@@ -1,3 +1,4 @@
+import { ClientPresence } from "@harmony/harmony";
 import { client } from "../client.ts";
 import { important } from "../util/logger.ts";
 
@@ -15,12 +16,11 @@ MarkBot © Licensed by Bean Tecnologies & Co.
     `);
 
     const funnyStatus = [
-        "Kaboom.js",
-        "Kaboom Server",
-        "Kaboom Playground",
+        "KAPLAY",
+        "KAPLAY Server",
+        "KAPLAYGROUND",
         "Family Friendly Words",
-        "Powerful",
-        "kaboomjs.com",
+        "kaplayjs.com",
         "Fireworks in kaboom.com",
         "twitter.com/kaboomjs",
         "Mark (?)",
@@ -31,11 +31,24 @@ MarkBot © Licensed by Bean Tecnologies & Co.
     ];
 
     function editFunnyStatus() {
-        client.setPresence({
-            name: funnyStatus[Math.floor(Math.random() * funnyStatus.length)],
-            type: "WATCHING",
-            status: "online",
-        });
+        // client.setPresence({
+        //     name: funnyStatus[Math.floor(Math.random() * funnyStatus.length)],
+        //     type: "WATCHING",
+        //     status: "online",
+        // });
+
+        client.setPresence(
+            new ClientPresence({
+                activity: {
+                    name:
+                        funnyStatus[
+                            Math.floor(Math.random() * funnyStatus.length)
+                        ],
+                    type: "WATCHING",
+                    url: "https://kaplayjs.com",
+                },
+            }),
+        );
     }
 
     setInterval(() => {

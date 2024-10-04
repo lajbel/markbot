@@ -2,7 +2,7 @@ import { Command } from "../types.ts";
 
 const cmd: Command = {
     name: "hi",
-    description: "say hi",
+    description: "Say hi",
     options: [
         {
             name: "user",
@@ -12,9 +12,15 @@ const cmd: Command = {
         },
     ],
     exe: (interaction) => {
-        const member = interaction.resolved.members[interaction.options?.[0]?.value] || interaction.member;
+        const member =
+            interaction.resolved.members[interaction.options?.[0]?.value]
+            || interaction.member;
 
-        interaction.reply(`<:oh:952678706927775784><:hi:952678717526798398> ${member?.nick ?? member?.user.username}`);
+        interaction.reply(
+            `<:oh:952678706927775784><:hi:952678717526798398> ${
+                member?.nick ?? member?.user.username
+            }`,
+        );
     },
 };
 
