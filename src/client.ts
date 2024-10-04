@@ -17,11 +17,15 @@ export const client = new Client({
     ],
 });
 
-client.interactions.commands.for(KAPLAY_GUILD).all().then((cmds) => {
-    cmds.forEach((cmd) => {
-        cmd.delete();
+if (Deno.env.get("MODE") !== "dev") {
+    client.interactions.commands.for(KAPLAY_GUILD).all().then((cmds) => {
+        cmds.forEach((cmd) => {
+            cmd.delete();
+        });
     });
-});
+
+    console.log("Commands deleted");
+}
 
 for await (const file of Deno.readDir("src/events")) {
     import(`./events/${file.name}`).then((mod) => {

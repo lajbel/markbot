@@ -8,7 +8,7 @@ const tips = [
         t: "```js\nkaplay({\n  burp: true,\n});```",
     },
     {
-        t: "mention <@&901298683906240582> for get <#883782079802908772> about KAPLAY",
+        t: "mention <@&901298683906240582> to get <#883782079802908772> about KAPLAY",
     },
     {
         t: "you can use these fonts in your KAPLAY game without import anything: `apl386`, `apl386o`, `sink`, `sinko`",
